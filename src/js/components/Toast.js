@@ -197,15 +197,15 @@ export default class Toast extends Component {
 
 Toast.propTypes = {
   /**
-   * @property {PropTypes.func} onMore - Called when the user clicks on the close control or the Toast is automatically closed after a while.
+   * @property {PropTypes.func} onClose - Called when the user clicks on the close control or the Toast is automatically closed after a while.
    */
   onClose: PropTypes.func,
   /**
-   * @property {PropTypes.func} onMore - The size of the Header. Defaults to medium.
+   * @property {['small', 'medium', 'large']} size - The size of the Header. Defaults to medium.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * @property {PropTypes.func} onMore - Which status to indicate.
+   * @property {PropTypes.string} status - Which status to indicate.
    */
   status: PropTypes.string
 };

@@ -258,14 +258,14 @@ const ANIMATIONS =
 
 Animate.propTypes = {
   /**
-   * @property {[PropTypes.string|PropTypes.func]} component - Wrapping component. Defaults to <div/>.
+   * @property {PropTypes.string|PropTypes.func} component - Wrapping component. Defaults to <div/>.
    */
   component: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func
   ]),
   /**
-   * @property {PropTypes.shape} enter - Animation when component is entering. Possible animations:fade|slide-up|slide-down|slide-left|slide-right
+   * @property {PropTypes.object} enter - Animation when component is entering. Possible animations:fade|slide-up|slide-down|slide-left|slide-right
    */
   enter: PropTypes.shape({
     animation: PropTypes.oneOf(ANIMATIONS).isRequired,
@@ -277,7 +277,7 @@ Animate.propTypes = {
    */
   keep: PropTypes.bool,
   /**
-   * @property {PropTypes.shape} leave - Animation when component is leaving. Defaults to enter animation.
+   * @property {PropTypes.object} leave - Animation when component is leaving. Defaults to enter animation.
    */
   leave: PropTypes.shape({
     animation: PropTypes.oneOf(ANIMATIONS).isRequired,
@@ -293,7 +293,7 @@ Animate.propTypes = {
    */
   onLeave: PropTypes.func,
   /**
-   * @property {[PropTypes.oneOf(['scroll'])|PropTypes.bool]} visible - Toggle visibility. When set to scroll, the animation will happen when the component scrolls into view. Defaults to false.
+   * @property {scroll|PropTypes.bool} visible - Toggle visibility. When set to scroll, the animation will happen when the component scrolls into view. Defaults to false.
    */
   visible: PropTypes.oneOfType([
     PropTypes.oneOf(['scroll']),

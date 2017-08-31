@@ -320,7 +320,7 @@ SearchInput.contextTypes = {
 
 SearchInput.propTypes = {
   /**
-   * @property {[PropTypes.shape]} defaultValue - What text to start with in the input.
+   * @property {PropTypes.object|PropTypes.string} defaultValue - What text to start with in the input.
    */
   defaultValue: PropTypes.oneOfType([
     PropTypes.shape({
@@ -350,7 +350,7 @@ SearchInput.propTypes = {
    */
   placeHolder: PropTypes.string,
   /**
-   * @property {} suggestions - Suggestions can be either a string or an object. The label property of suggestion objects can be a string or a React element. This allows rendering richer suggestion representations.
+   * @property {PropTypes.string|PropTypes.object} suggestions - Suggestions can be either a string or an object. The label property of suggestion objects can be a string or a React element. This allows rendering richer suggestion representations.
    */
   suggestions: PropTypes.arrayOf(
     PropTypes.oneOfType([

@@ -110,7 +110,7 @@ export default class Accordion extends Component {
 
 Accordion.propTypes = {
   /**
-   * @property {[PropTypes.number,PropTypes.arrayOf(PropTypes.number)]} active - Optional active panels to be opened by default.
+   * @property {PropTypes.number|PropTypes.number[]} active - Optional active panels to be opened by default.
    */
   active: PropTypes.oneOfType([
     PropTypes.number,

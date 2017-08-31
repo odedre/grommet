@@ -228,7 +228,7 @@ Button.propTypes = {
    */
   fill: PropTypes.bool,
   /**
-   * @property {} hoverIndicator - Optional. The hover indicator to apply when the user is mousing over the button. An object can be also be specified for color index support: {background: 'neutral-2'}. This prop is meant to be used only with plain Buttons.
+   * @property {background|PropTypes.object} hoverIndicator - Optional. The hover indicator to apply when the user is mousing over the button. An object can be also be specified for color index support: {background: 'neutral-2'}. This prop is meant to be used only with plain Buttons.
    */
   hoverIndicator: PropTypes.oneOfType([
     PropTypes.oneOf(['background']),

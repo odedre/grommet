@@ -384,14 +384,14 @@ List.propTypes = {
    */
   onSelect: PropTypes.func,
   /**
-   * @property {[PropTypes.bool|PropTypes.oneOf(['multiple'])]} selectable - Whether rows are selectable. multiple indicates that multiple rows may be selected
+   * @property {[true|false|multiple]} selectable - Whether rows are selectable. multiple indicates that multiple rows may be selected
    */
   selectable: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['multiple'])
   ]),
   /**
-   * @property {[PropTypes.number|PropTypes.arrayOf(PropTypes.number)]} selected - The currently selected item(s) using a zero based index.
+   * @property {PropTypes.number|PropTypes.number[]} selected - The currently selected item(s) using a zero based index.
    */
   selected: PropTypes.oneOfType([
     PropTypes.number,

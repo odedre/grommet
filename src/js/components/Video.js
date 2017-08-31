@@ -345,7 +345,7 @@ Video.propTypes = {
    */
   fit: PropTypes.oneOf(['contain', 'cover']),
   /**
-   * @property {[true, 'horizontal', 'vertical', false]} full - Whether the image should expand to fill the available width and/or height.
+   * @property {Proptypes.bool| horizontal| vertical} full - Whether the image should expand to fill the available width and/or height.
    */
   full: PropTypes.oneOf([true, 'horizontal', 'vertical', false]),
   /**
@@ -381,7 +381,7 @@ Video.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * @property {[PropTypes.shape]} timeline - An array of: {label: <string>, seconds: <number>} used to indicate chapter markers.
+   * @property {PropTypes.object[]} timeline - An array of: {label: <string>, seconds: <number>} used to indicate chapter markers.
    */
   timeline: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,

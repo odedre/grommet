@@ -780,7 +780,7 @@ Topology.contextTypes = {
 Topology.propTypes = {
   a11yTitle: PropTypes.string,
   /**
-   * @property {[PropTypes.shape]} links - An array of: {ids: [<id>, ...], colorIndex: <string>}. The ids should reference id properties of contained Topology.Part components.
+   * @property {PropTypes.object[]} links - An array of: {ids: [<id>, ...], colorIndex: <string>}. The ids should reference id properties of contained Topology.Part components.
    */
   links: PropTypes.arrayOf(
     PropTypes.shape({

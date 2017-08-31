@@ -116,7 +116,7 @@ export default class TableHeader extends Component {
 
 TableHeader.propTypes = {
   /**
-   * @property {} labels - Header cell contents.
+   * @property {[PropTypes.node,PropTypes.array]} labels - Header cell contents.
    */
   labels: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.node,

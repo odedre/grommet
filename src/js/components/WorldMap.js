@@ -609,7 +609,7 @@ WorldMap.propTypes = {
   // either continent or place must be provided for a series item
   
   /**
-   * @property {[PropTypes.shape]} series - An array of objects describing the data. The available continents are: NorthAmerica, SouthAmerica, Europe, Africa, Asia, and Australia. A place is a two dimensional coordinate on the map. You can use onSelectPlace to interact with the map to select places. Or, you can specify a latitude and longitude. You must specify either a continent or a place in each series item. label is used for accessibility and should always be provided. flag is anything renderable which will be placed over a continent or adjacent to a place. onHover will be passed a single boolean argument indicating whether the user has started or stopped hovering over the item.
+   * @property {PropTypes.object[]} series - An array of objects describing the data. The available continents are: NorthAmerica, SouthAmerica, Europe, Africa, Asia, and Australia. A place is a two dimensional coordinate on the map. You can use onSelectPlace to interact with the map to select places. Or, you can specify a latitude and longitude. You must specify either a continent or a place in each series item. label is used for accessibility and should always be provided. flag is anything renderable which will be placed over a continent or adjacent to a place. onHover will be passed a single boolean argument indicating whether the user has started or stopped hovering over the item.
    */
   series: PropTypes.arrayOf(PropTypes.shape({
     continent: PropTypes.oneOf(CONTINENTS.map(c => c.id)),

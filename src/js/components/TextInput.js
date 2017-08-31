@@ -371,7 +371,7 @@ TextInput.propTypes = {
    */
   placeHolder: PropTypes.string,
   /**
-   * @property {} suggestions - Suggestions to show. It is recommended to avoid showing too many suggestions and instead rely on the user to type more.
+   * @property {[PropTypes.object,PropTypes.string]} suggestions - Suggestions to show. It is recommended to avoid showing too many suggestions and instead rely on the user to type more.
    */
   suggestions: PropTypes.arrayOf(
     PropTypes.oneOfType([

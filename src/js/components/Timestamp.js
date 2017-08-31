@@ -165,14 +165,14 @@ Timestamp.propTypes = {
    */
   align: PropTypes.oneOf(['start', 'center', 'end']),
   /**
-   * @property {} fields - Which fields to include in the Timestamp.
+   * @property {PropTypes.string[]|PropTypes.string} fields - Which fields to include in the Timestamp.
    */
   fields: PropTypes.oneOfType([
     PropTypes.arrayOf(FIELD_TYPES),
     FIELD_TYPES
   ]),
   /**
-   * @property {[PropTypes.string|PropTypes.object]} value - The date value as an ISO8601 string or a Date object.
+   * @property {PropTypes.string|PropTypes.object} value - The date value as an ISO8601 string or a Date object.
    */
   value: PropTypes.oneOfType([
     PropTypes.string, // ISO-8601 string

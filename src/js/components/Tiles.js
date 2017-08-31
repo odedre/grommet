@@ -566,14 +566,14 @@ Tiles.propTypes = {
    */
   onSelect: PropTypes.func,
   /**
-   * @property {[PropTypes.bool|PropTypes.oneOf(['multiple'])]} selectable - Function that will be called when more data is needed.
+   * @property {PropTypes.bool|[multiple]} selectable - Function that will be called when more data is needed.
    */
   selectable: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['multiple'])
   ]),
   /**
-   * @property {[PropTypes.number|PropTypes.arrayOf(PropTypes.number)]} selected - Function that will be called when more data is needed.
+   * @property {PropTypes.number|PropTypes.number[]} selected - Function that will be called when more data is needed.
    */
   selected: PropTypes.oneOfType([
     PropTypes.number,

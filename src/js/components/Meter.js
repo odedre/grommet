@@ -363,7 +363,7 @@ Meter.propTypes = {
    */
   onActive: PropTypes.func,
   /**
-   * @property {[PropTypes.shape]} series - An array of objects describing the data. Either this or the value property must be provided. The spiral type Meter also accepts alabel property for the objects in the series.*
+   * @property {PropTypes.object[]} series - An array of objects describing the data. Either this or the value property must be provided. The spiral type Meter also accepts alabel property for the objects in the series.*
    */
   series: PropTypes.arrayOf(PropTypes.shape({
     colorIndex: PropTypes.string,
@@ -385,7 +385,7 @@ Meter.propTypes = {
    */
   threshold: PropTypes.number,
   /**
-   * @property {[PropTypes.shape]} thresholds - An array of objects describing thresholds.
+   * @property {PropTypes.object[]} thresholds - An array of objects describing thresholds.
    */
   thresholds: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.number.isRequired,

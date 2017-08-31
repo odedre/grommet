@@ -347,7 +347,7 @@ DateTime.propTypes = {
    */
   step: PropTypes.number,
   /**
-   * @property {[PropTypes.string|PropTypes.object]} value - If a string is specified, it is put in the input. If a Date or moment is specified, it is formatted and put in the input.
+   * @property {PropTypes.string|PropTypes.object} value - If a string is specified, it is put in the input. If a Date or moment is specified, it is formatted and put in the input.
    */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };

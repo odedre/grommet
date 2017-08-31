@@ -386,11 +386,11 @@ export default class SunBurst extends Component {
 SunBurst.propTypes = {
   a11yTitle: PropTypes.string,
   /**
-   * @property {[PropTypes.number]} active - The currently active index path, if any.
+   * @property {PropTypes.number[]} active - The currently active index path, if any.
    */
   active: PropTypes.arrayOf(PropTypes.number),
   /**
-   * @property {[PropTypes.shape]} data - An array of objects describing the data. The value property must be specified. If the total property is specified, it sets the total value for the children. If not specified, the total is the sum of the values. The children property objects are the same structure as the items in the data array. NOTE: Currently the graphic does not work well at depths greater than three.
+   * @property {PropTypes.object[]} data - An array of objects describing the data. The value property must be specified. If the total property is specified, it sets the total value for the children. If not specified, the total is the sum of the values. The children property objects are the same structure as the items in the data array. NOTE: Currently the graphic does not work well at depths greater than three.
    */
   data: PropTypes.arrayOf(PropTypes.shape({
     children: PropTypes.arrayOf(PropTypes.object),

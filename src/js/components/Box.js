@@ -410,11 +410,11 @@ Box.propTypes = {
     // remove in 1.0?
   onClick: PropTypes.func,
   /**
-   * @property {['start', 'center', 'between', 'end', 'around']} justify - How to align the contents along the main axis.
+   * @property {['start'| 'center'| 'between'| 'end'| 'around']} justify - How to align the contents along the main axis.
    */
   justify: PropTypes.oneOf(['start', 'center', 'between', 'end', 'around']),
   /**
-   * @property {} margin - The amount of margin around the box. An object can be specified to distinguish horizontal margin, vertical margin, and margin on a particular side of the box: {horizontal: none|small|medium|large, vertical: none|small|medium|large, top|left|right|bottom: none|small|medium|large}. Defaults to none.
+   * @property {none|small|medium|large|{...}} margin - The amount of margin around the box. An object can be specified to distinguish horizontal margin, vertical margin, and margin on a particular side of the box: {horizontal: none|small|medium|large, vertical: none|small|medium|large, top|left|right|bottom: none|small|medium|large}. Defaults to none.
    */
   margin: PropTypes.oneOfType([
     PropTypes.oneOf(MARGIN_SIZES),
@@ -428,7 +428,7 @@ Box.propTypes = {
     })
   ]),
   /**
-   * @property {} pad - The amount of padding to put around the contents. An object can be specified to distinguish horizontal padding, vertical padding, and padding between child components: {horizontal: none|small|medium|large, vertical: none|small|medium|large, between: none|small|medium|large}. Defaults to none. Padding set using between only affects components based on the direction set (adds horizontal padding between components for row, or vertical padding between components for column).
+   * @property {none|small|medium|large|{...}} pad - The amount of padding to put around the contents. An object can be specified to distinguish horizontal padding, vertical padding, and padding between child components: {horizontal: none|small|medium|large, vertical: none|small|medium|large, between: none|small|medium|large}. Defaults to none. Padding set using between only affects components based on the direction set (adds horizontal padding between components for row, or vertical padding between components for column).
    */
   pad: PropTypes.oneOfType([
     PropTypes.oneOf(PAD_SIZES),

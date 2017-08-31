@@ -388,7 +388,7 @@ ResourceMap.propTypes = {
    */
   active: PropTypes.string,
   /**
-   * @property {PropTypes.shape} data - An array of objects describing the data.
+   * @property {PropTypes.object} data - An array of objects describing the data.
    */
   data: PropTypes.shape({
     categories: PropTypes.arrayOf(PropTypes.shape({

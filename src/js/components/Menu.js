@@ -543,7 +543,7 @@ Menu.propTypes = {
   icon: PropTypes.node,
   id: PropTypes.string,
   /**
-   * @property {[PropTypes.bool|PropTypes.oneOf(['expand'])]} inline - Indicates whether the menu should be shown inline or a control shown to open it in a drop down. If false, the specified label or icon will be shown, if neither are specified, a default icon will be shown.
+   * @property {[PropTypes.bool,expand]} inline - Indicates whether the menu should be shown inline or a control shown to open it in a drop down. If false, the specified label or icon will be shown, if neither are specified, a default icon will be shown.
    */
   inline: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['expand'])]),
   /**

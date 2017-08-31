@@ -550,7 +550,7 @@ Distribution.propTypes = {
    */
   full: PropTypes.bool, // deprecated, use size='full'
   /**
-   * @property {[PropTypes.shape]} series - An array of objects describing the data. All properties except value are optional. labelValue is used as the visible value. If labelValue is not set, the value is displayed instead.
+   * @property {PropTypes.object[]} series - An array of objects describing the data. All properties except value are optional. labelValue is used as the visible value. If labelValue is not set, the value is displayed instead.
    */
   series: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.node,

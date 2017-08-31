@@ -277,18 +277,18 @@ export default class Card extends Component {
 
 Card.propTypes = {
   /**
-   * @property {Box.propTypes.pad} contentPad - Padding for the Box containing the text content. See pad in [Box](#) for additional details.
+   * @property {none|small|medium|large|{...}} contentPad - Padding for the Box containing the text content. See pad in [Box](#) for additional details.
    */
   contentPad: Box.propTypes.pad,
   /**
-   * @property {[PropTypes.string|PropTypes.element]} description - Either a string in markdown syntax or an element. See [Markdown](#) for additional details.
+   * @property {PropTypes.string|PropTypes.element} description - Either a string in markdown syntax or an element. See [Markdown](#) for additional details.
    */
   description: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
   ]),
   /**
-   * @property {[PropTypes.string|PropTypes.element]} heading - Heading content.
+   * @property {PropTypes.string|PropTypes.element} heading - Heading content.
    */
   heading: PropTypes.oneOfType([
     PropTypes.string,
@@ -299,7 +299,7 @@ Card.propTypes = {
    */
   headingStrong: PropTypes.bool,
   /**
-   * @property {[PropTypes.string|PropTypes.element]} label - Label content.
+   * @property {PropTypes.string|PropTypes.element} label - Label content.
    */
   label: PropTypes.oneOfType([
     PropTypes.string,
@@ -314,7 +314,7 @@ Card.propTypes = {
    */
   textSize: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
   /**
-   * @property {[PropTypes.string|PropTypes.element]} thumbnail - Url path to image or an [Image](#) element. Use the reverse property to position the thumbnail within card.
+   * @property {PropTypes.string|PropTypes.element} thumbnail - Url path to image or an [Image](#) element. Use the reverse property to position the thumbnail within card.
    */
   thumbnail: PropTypes.oneOfType([
     PropTypes.string,
@@ -322,7 +322,7 @@ Card.propTypes = {
   ]),
   truncate: PropTypes.bool,
   /**
-   * @property {PropTypes.shape} video - Video media type and source path or a [Video](#) element.
+   * @property {PropTypes.object|PropTypes.element} video - Video media type and source path or a [Video](#) element.
    */
   video: PropTypes.oneOfType([
     PropTypes.shape({

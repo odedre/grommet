@@ -505,52 +505,52 @@ Search.defaultProps = {
 Search.propTypes = {
   align: PropTypes.string,
   /**
-   * @property {PropTypes.string} defaultValue - 
+   * @property {PropTypes.string} defaultValue - What text to start with in the input.
    */
   defaultValue: PropTypes.string,
   /**
-   * @property {PropTypes.custom} dropAlign - 
+   * @property {PropTypes.custom} dropAlign - Where to place the drop down. At most one of left or right and one of top or bottom should be specified.
    */
   dropAlign: dropAlignPropType,
   dropColorIndex: PropTypes.string,
   /**
-   * @property {PropTypes.bool} fill - 
+   * @property {PropTypes.bool} fill - Indicates whether an inline search input should take up the full width of its parent container or not. Defaults to false.
    */
   fill: PropTypes.bool,
   /**
-   * @property {['start', 'end']} iconAlign - 
+   * @property {['start', 'end']} iconAlign - Whether the search icon should align with the start or end of the input field. Defaults to end.
    */
   iconAlign: PropTypes.oneOf(['start', 'end']),
   id: PropTypes.string,
   initialFocus: PropTypes.bool,
   /**
-   * @property {PropTypes.bool} inline - 
+   * @property {PropTypes.bool} inline - Indicates that the search input should always be visible.
    */
   inline: PropTypes.bool,
   /**
-   * @property {PropTypes.func} onDOMChange - 
+   * @property {PropTypes.func} onDOMChange - Function that will be called when the user types in the input.
    */
   onDOMChange: PropTypes.func,
   /**
-   * @property {PropTypes.func} onSelect - 
+   * @property {PropTypes.func} onSelect - Function that will be called when the user selects a suggestion. The target corresponds to the embedded input element , allowing you to distinguish which component triggered the event . The suggestion contains the object chosen from the supplied suggestions. selected will be true when the user has chosen one of the suggestions, and false when the user presses enter after entering text (without selecting a suggestion).
    */
   onSelect: PropTypes.func,
   onKeyDown: PropTypes.func,
   pad: PropTypes.oneOf(['small', 'medium']),
   /**
-   * @property {PropTypes.string} placeHolder - 
+   * @property {PropTypes.string} placeHolder - Placeholder text to use when the input is empty.
    */
   placeHolder: PropTypes.string,
   /**
-   * @property {PropTypes.bool} responsive - 
+   * @property {PropTypes.bool} responsive - Whether the search control is responsive (turns off inline search option for small screen sizes). If responsive is false, large inputs will shrink to the default inline size for smaller screens (instead of reverting to the search control button by default). Defaults to true.
    */
   responsive: PropTypes.bool,
   /**
-   * @property {['small', 'medium', 'large']} size - 
+   * @property {['small', 'medium', 'large']} size - The size of the inline search input. Defaults to medium.
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   /**
-   * @property {} suggestions - 
+   * @property {PropTypes.object[]|PropTypes.string[]} suggestions - Suggestions to show, typically based on what the user has typed so far. You can pass an array of strings or objects. Objects must have a label: property but can have any other properties you like. This object will be given to the onSelect() handler if the suggestion is selected.
    */
   suggestions: PropTypes.arrayOf(
     PropTypes.oneOfType([
@@ -562,7 +562,7 @@ Search.propTypes = {
     ])
   ),
   /**
-   * @property {PropTypes.func} onMore - Function that will be called when more data is needed.
+   * @property {PropTypes.string} value - What text to show in the input.
    */
   value: PropTypes.string
 };

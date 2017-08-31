@@ -122,7 +122,7 @@ Value.propTypes = {
    */
   icon: PropTypes.node,
   /**
-   * @property {[PropTypes.string|PropTypes.node]} label - Optional short description of the value.
+   * @property {PropTypes.string|PropTypes.node} label - Optional short description of the value.
    */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
   /**
@@ -146,12 +146,12 @@ Value.propTypes = {
    */
   reverse: PropTypes.bool,
   /**
-   * @property {[PropTypes.number|PropTypes.string|PropTypes.node]} value - The value itself.
+   * @property {PropTypes.number|PropTypes.string|PropTypes.node} value - The value itself.
    */
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string,
     PropTypes.node]),
   /**
-   * @property {[PropTypes.string|PropTypes.node]} units - Optional units to display next to the value.
+   * @property {PropTypes.string|PropTypes.node} units - Optional units to display next to the value.
    */  
   units: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 };

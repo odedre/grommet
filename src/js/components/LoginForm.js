@@ -205,7 +205,7 @@ LoginForm.propTypes = {
     rememberMe: PropTypes.bool
   }),
   /**
-   * @property {[PropTypes.string|PropTypes.node]} errors - An array of error messages. Use this if there is a failure to log in.
+   * @property {[PropTypes.string,PropTypes.node]} errors - An array of error messages. Use this if there is a failure to log in.
    */
   errors: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,

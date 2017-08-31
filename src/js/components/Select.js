@@ -516,11 +516,11 @@ Select.propTypes = {
   placeHolder: PropTypes.string,
   searchPlaceHolder: PropTypes.string,
   /**
-   * @property {[valueType]} options - Options can be either a string or an object. The label property of option objects can be a string or a React element. This allows rendering richer option representations.
+   * @property {PropTypes.string|PropTypes.object} options - Options can be either a string or an object. The label property of option objects can be a string or a React element. This allows rendering richer option representations.
    */
   options: PropTypes.arrayOf(valueType).isRequired,
   /**
-   * @property {[valueType|PropTypes.arrayOf(valueType)]} value - What text to put in the input.
+   * @property {PropTypes.string|PropTypes.object} value - What text to put in the input.
    */
   value: PropTypes.oneOfType([valueType, PropTypes.arrayOf(valueType)])
 };

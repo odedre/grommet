@@ -283,7 +283,7 @@ Legend.propTypes = {
    */
   onActive: PropTypes.func,
   /**
-   * @property {} series - An array of objects describing the data.
+   * @property {PropTypes.object[]} series - An array of objects describing the data.
    */
   series: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
@@ -316,7 +316,7 @@ Legend.propTypes = {
     PropTypes.node
   ]),
   /**
-   * @property {} units - Optional units to display next to the value label.
+   * @property {PropTypes.string|PropTypes.object} units - Optional units to display next to the value label.
    */
   units: PropTypes.oneOfType([
     PropTypes.string,

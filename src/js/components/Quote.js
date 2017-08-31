@@ -89,7 +89,7 @@ Quote.propTypes = {
    */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
   /**
-   * @property {[PropTypes.string|PropTypes.element]} credit - The name of the entity that the quote is credited to.
+   * @property {PropTypes.string|PropTypes.element} credit - The name of the entity that the quote is credited to.
    */
   credit: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
   /**
