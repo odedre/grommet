@@ -9,6 +9,22 @@ import { announce } from '../utils/Announcer';
 const CLASS_ROOT = CSSClassnames.VALUE;
 const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
 
+/**
+ * #Value
+ * Value component, focusing on a single number.
+ * 
+ * ```js
+ * import Value from 'grommet/components/Value';
+ * 
+ * <Value value={75}
+ *   icon={<Globe />}
+ *   label='Sample label'
+ *   trendIcon={<LinkUp />}
+ *   units='%'
+ *   responsive={true}
+ *   reverse={true} />
+ * ```
+ */
 export default class Value extends Component {
 
   componentDidUpdate () {
@@ -91,19 +107,52 @@ export default class Value extends Component {
 }
 
 Value.propTypes = {
+  /**
+   * @property {PropTypes.bool} active - The horizontal alignment of the label. Defaults to center.
+   */
   active: PropTypes.bool,
   align: PropTypes.oneOf(['start', 'center', 'end']),
   announce: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} colorIndex - The color identifier to use for the text color. For example: neutral-1. See Color for possible values.
+   */
   colorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.node} icon - Optional icon element to place next to the value. See Icon.
+   */
   icon: PropTypes.node,
+  /**
+   * @property {[PropTypes.string|PropTypes.node]} label - Optional short description of the value.
+   */
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  /**
+   * @property {PropTypes.func} onClick - Click handler.
+   */
   onClick: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} responsive - Whether the font size and spacing should adapt to the resolution. This is useful when used in combination with a Meter that is responsively adjusting. Defaults to false.
+   */
   responsive: PropTypes.bool,
+  /**
+   * @property {['xsmall', 'small', 'medium', 'large', 'xlarge']} size - The size of the value. Defaults to medium.
+   */
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
+  /**
+   * @property {PropTypes.node} trendIcon - Optional icon element to place next to the value indicating the trend. For example, a LinkUp icon. See Icon.
+   */
   trendIcon: PropTypes.node,
+  /**
+   * @property {PropTypes.bool} reverse - Whether to reverse the order of icon and value nodes. Defaults to false.
+   */
   reverse: PropTypes.bool,
+  /**
+   * @property {[PropTypes.number|PropTypes.string|PropTypes.node]} value - The value itself.
+   */
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string,
     PropTypes.node]),
+  /**
+   * @property {[PropTypes.string|PropTypes.node]} units - Optional units to display next to the value.
+   */  
   units: PropTypes.oneOfType([PropTypes.string, PropTypes.node])
 };
 

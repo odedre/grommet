@@ -1,5 +1,6 @@
 // (C) Copyright 2014-2016 Hewlett Packard Enterprise Development LP
 
+
 import React, { Children, Component } from 'react';
 import ReactPropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -10,6 +11,29 @@ import LinkNextIcon from './icons/base/LinkNext';
 import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.ANCHOR;
+
+/**
+ * #Anchor
+ * A text link. We have a separate component from the browser base so we can style it. You can either set the icon and/or label properties or just use children.
+ * 
+ * ```js
+ * import Anchor from 'grommet/components/Anchor';
+ * 
+ * <Anchor icon={<Edit />}
+ *   label='Label'
+ *   href='#'
+ *   primary={true}
+ *   reverse={true}
+ *   disabled={true}
+ *   path='/'
+ *   target='_blank'>
+ *   <Heading tag='h3'>
+ *     Heading Label
+ *   </Heading>
+ *   Text label
+ * </Anchor>
+ * ```
+ */
 
 export default class Anchor extends Component {
 

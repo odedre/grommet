@@ -24,6 +24,34 @@ function isFunction (obj) {
 
 // We have a separate module for the drop component
 // so we can transfer the router context.
+
+/**
+ * #Menu
+ * Presents a list of choices responsively. A Menu can either present the list of choices inline or within a drop down behind a control that opens it.
+ * 
+ * Properties for [Box](#) are also available.
+ * ```js
+ * import Menu from 'grommet/components/Menu';
+ * 
+ * <Menu responsive={true}
+ *   icon={<Actions />}
+ *   label='Label'
+ *   inline={true}
+ *   primary={true}>
+ *   <Anchor href='#'
+ *     className='active'>
+ *     First action
+ *   </Anchor>
+ *   <Anchor href='#'>
+ *     Second action
+ *   </Anchor>
+ *   <Anchor href='#'>
+ *     Third action
+ *   </Anchor>
+ * </Menu>
+ * 
+ * ```
+ */
 class MenuDrop extends Component {
 
   constructor(props, context) {
@@ -500,14 +528,35 @@ export default class Menu extends Component {
 }
 
 Menu.propTypes = {
+  /**
+   * @property {PropTypes.bool} closeOnClick - Indicates whether the opened menu drop down should close when clicked. Defaults to true.
+   */
   closeOnClick: PropTypes.bool,
+  /**
+   * @property {PropTypes.custom} dropAlign - Where to place the drop down. The keys correspond to a side of the drop down. The values correspond to a side of the control. For instance, {left: 'left', top: 'bottom'} would align the left edges and the top of the drop down to the bottom of the control. At most one of left or right and one of top or bottom should be specified.
+   */
   dropAlign: dropAlignPropType,
   dropColorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.node} icon - Indicates that the menu should be collapsed and the icon shown as a control top open it.
+   */
   icon: PropTypes.node,
   id: PropTypes.string,
+  /**
+   * @property {[PropTypes.bool|PropTypes.oneOf(['expand'])]} inline - Indicates whether the menu should be shown inline or a control shown to open it in a drop down. If false, the specified label or icon will be shown, if neither are specified, a default icon will be shown.
+   */
   inline: PropTypes.oneOfType([PropTypes.bool, PropTypes.oneOf(['expand'])]),
+  /**
+   * @property {PropTypes.bool} fill - Indicates whether an inline menu should take up the available space of its parent container or not. Defaults to false.
+   */
   fill: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} label - Indicates that the menu should be collapsed and the label shown as a control top open it.
+   */
   label: PropTypes.string,
+  /**
+   * @property {['small', 'medium', 'large']} size - The size of the Menu. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   ...Box.propTypes
 };

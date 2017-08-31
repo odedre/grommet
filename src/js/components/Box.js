@@ -14,6 +14,49 @@ import { announce } from '../utils/Announcer';
 const CLASS_ROOT = CSSClassnames.BOX;
 const BACKGROUND_COLOR_INDEX = CSSClassnames.BACKGROUND_COLOR_INDEX;
 
+/**
+ * #Box
+ * General purpose flexible box layout. This supports many, but not all, of the [flexbox](#) capabilities.
+ * 
+ * ```js
+ * import Box from 'grommet/components/Box';
+ * 
+ * <Box direction='row'
+ *   justify='start'
+ *   align='center'
+ *   wrap={true}
+ *   pad='medium'
+ *   margin='small'
+ *   colorIndex='light-2'
+ *   onClick={...}
+ *   onFocus={...}>
+ *   <Value value={1}
+ *     colorIndex='accent-1' />
+ *   <Box direction='row'
+ *     justify='start'
+ *     align='center'
+ *     wrap={true}
+ *     pad='medium'
+ *     margin='small'
+ *     colorIndex='light-1'
+ *     onClick={...}
+ *     onFocus={...}>
+ *     <Value value={2} />
+ *   </Box>
+ *   <Box direction='row'
+ *     justify='start'
+ *     align='center'
+ *     wrap={true}
+ *     pad='medium'
+ *     margin='small'
+ *     colorIndex='light-1'
+ *     onClick={...}
+ *     onFocus={...}>
+ *     <Value value={3} />
+ *   </Box>
+ * </Box>
+ * ```
+ */
 export default class Box extends Component {
 
   constructor (props) {
@@ -303,20 +346,53 @@ const MARGIN_SIZES = ['small', 'medium', 'large', 'none'];
 const PAD_SIZES = ['small', 'medium', 'large', 'xlarge', 'none'];
 
 Box.propTypes = {
+  /**
+   * @property {PropTypes.string} a11yTitle - Custom title used by screen readers. Defaults to 'Box'. Only used if onClick handler is specified.
+   */
   a11yTitle: PropTypes.string,
   announce: PropTypes.bool,
+  /**
+   * @property {['start', 'center', 'end', 'baseline', 'stretch'])} align - How to align the contents along the cross axis.
+   */
   align: PropTypes.oneOf(['start', 'center', 'end', 'baseline', 'stretch']),
+  /**
+   * @property {PropTypes.bool} alignContent - How to align the contents when there is extra space in the cross axis. Defaults to stretch
+   */
   alignContent: PropTypes.oneOf(['start', 'center', 'end', 'between',
     'around', 'stretch']),
+  /**
+   * @property {['start', 'center', 'end', 'stretch']} alignSelf - How to align within its container along the cross axis.
+   */  
   alignSelf: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
+  /**
+   * @property {PropTypes.bool} appCentered - Whether the box background should stretch across an App that is centered.
+   */
   appCentered: PropTypes.bool,
   backgroundImage: PropTypes.string,
+  /**
+   * @property {[SIZES]} basis - Whether to use a fixed or relative size within its container.
+   */
   basis: PropTypes.oneOf(SIZES),
+  /**
+   * @property {PropTypes.string} colorIndex - The color identifier to use for the background color. For example: 'neutral-1'. See Color for possible values.
+   */
   colorIndex: PropTypes.string,
   containerClassName: PropTypes.string,
+  /**
+   * @property {['row', 'column']} direction - The orientation to layout the child components in. Defaults to column.
+   */
   direction: PropTypes.oneOf(['row', 'column']),
+  /**
+   * @property {PropTypes.bool} focusable - Whether keyboard focus should be added for clickable Boxes. Defaults to true.
+   */
   focusable: PropTypes.bool,
+  /**
+   * @property {['grow', 'shrink', true, false]} flex - Whether flex-grow and/or flex-shrink is true.
+   */
   flex: PropTypes.oneOf(['grow', 'shrink', true, false]),
+  /**
+   * @property {[PropTypes.bool|PropTypes.string|PropTypes.shape]} full - Whether the width and/or height should take the full viewport size.]
+   */
   full: PropTypes.oneOfType(
     [
       PropTypes.bool,
@@ -328,9 +404,18 @@ Box.propTypes = {
       })
     ]
   ),
+  /**
+   * @property {PropTypes.func} onClick - Optional click handler.
+   */
     // remove in 1.0?
   onClick: PropTypes.func,
+  /**
+   * @property {['start', 'center', 'between', 'end', 'around']} justify - How to align the contents along the main axis.
+   */
   justify: PropTypes.oneOf(['start', 'center', 'between', 'end', 'around']),
+  /**
+   * @property {} margin - The amount of margin around the box. An object can be specified to distinguish horizontal margin, vertical margin, and margin on a particular side of the box: {horizontal: none|small|medium|large, vertical: none|small|medium|large, top|left|right|bottom: none|small|medium|large}. Defaults to none.
+   */
   margin: PropTypes.oneOfType([
     PropTypes.oneOf(MARGIN_SIZES),
     PropTypes.shape({
@@ -342,6 +427,9 @@ Box.propTypes = {
       vertical: PropTypes.oneOf(MARGIN_SIZES)
     })
   ]),
+  /**
+   * @property {} pad - The amount of padding to put around the contents. An object can be specified to distinguish horizontal padding, vertical padding, and padding between child components: {horizontal: none|small|medium|large, vertical: none|small|medium|large, between: none|small|medium|large}. Defaults to none. Padding set using between only affects components based on the direction set (adds horizontal padding between components for row, or vertical padding between components for column).
+   */
   pad: PropTypes.oneOfType([
     PropTypes.oneOf(PAD_SIZES),
     PropTypes.shape({
@@ -350,13 +438,29 @@ Box.propTypes = {
       vertical: PropTypes.oneOf(PAD_SIZES)
     })
   ]),
+  /**
+   * @property {PropTypes.bool} primary - Whether this is a primary Box that will receive skip to main content anchor. Defaults to false.
+   */
   primary: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} reverse - Whether to reverse the order of the child components.
+
+   */
   reverse: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} responsive - Whether children laid out in a row direction should be switched to a column layout when the display area narrows. Defaults to true.
+   */
   responsive: PropTypes.bool,
   role: PropTypes.string,
+  /**
+   * @property {['top', 'bottom', 'left', 'right', 'horizontal', 'vertical', 'all', 'none']} separator - Add a separator.
+   */
   separator: PropTypes.oneOf(['top', 'bottom', 'left', 'right',
     'horizontal', 'vertical', 'all', 'none']),
-  size: PropTypes.oneOfType([
+  /**
+   * @property {} size - The width of the Box. Defaults to auto. An object can be specified to distinguish width, height (with additional min and max options for width and height). E.g. {height: small, width: {max: large}}.
+   */
+    size: PropTypes.oneOfType([
     PropTypes.oneOf(['auto', 'xsmall', 'small', 'medium', 'large',
       'xlarge', 'xxlarge', 'full']), // remove in 1.0?, use basis
     PropTypes.shape({
@@ -376,12 +480,26 @@ Box.propTypes = {
       ])
     })
   ]),
+  /**
+   * @property {PropTypes.string} tag - The DOM tag to use for the element. Defaults to div.
+
+   */
   tag: PropTypes.string,
+  /**
+   * @property {['left', 'center', 'right']} textAlign - Set text-align for the Box contents.
+
+   */
   textAlign: PropTypes.oneOf(['left', 'center', 'right']),
+  /**
+   * @property {[PropTypes.node|PropTypes.string]} texture - A texture image URL to apply to the background.
+   */
   texture: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.string
   ]),
+  /**
+   * @property {PropTypes.bool} wrap - Whether children can wrap if they can't all fit. Defaults to false.
+   */
   wrap: PropTypes.bool
 };
 

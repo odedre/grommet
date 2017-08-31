@@ -31,6 +31,34 @@ function getMaxDecimalDigits (series) {
   return Math.pow(10, maxDigits);
 }
 
+/**
+ * #Meter
+ * Shows a bar, arc, or circular meter graphic.
+ * 
+ * ```js
+ * <Box direction='row'
+ *   pad={{"between": "small"}}>
+ *   <Meter vertical={true}
+ *     series={[{"label": "Gen 7", "value": 50, "onClick": "...", "colorIndex": "graph-1"}, {"label": "Gen 8", "value": 1, "onClick": "...", "colorIndex": "graph-2"}, {"label": "Gen 9", "value": 19, "onClick": "...", "colorIndex": "graph-3"}, {"label": "Gen 10", "value": 30, "onClick": "...", "colorIndex": "graph-4"}]}
+ *     stacked={true}
+ *     threshold={90}
+ *     max={100}
+ *     onActive={...} />
+ *   <Box justify='between'>
+ *     <Label size='small'>
+ *       0 GB
+ *     </Label>
+ *     <Value value={100}
+ *       label='Total'
+ *       units='GB'
+ *       align='start' />
+ *     <Label size='small'>
+ *       100 GB
+ *     </Label>
+ *   </Box>
+ * </Box>
+ * ```
+ */
 export default class Meter extends Component {
 
   constructor(props, context) {
@@ -309,29 +337,71 @@ export default class Meter extends Component {
 
 Meter.propTypes = {
   active: PropTypes.bool, // when single value
+  /**
+   * @property {PropTypes.number} activeIndex - The currently active series value index, if any.
+   */
   activeIndex: PropTypes.number, // for series values
   a11yTitle: PropTypes.string,
+  /**
+   * @property {PropTypes.string} colorIndex - The color identifier to use for the graphic color. For example: 'graph-1'
+   */
   colorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.node} label - Callers are encouraged to use Value to construct the appropriate label.
+   */
   label: PropTypes.node,
+  /**
+   * @property {PropTypes.number} max - The largest possible value. Defaults to 100. 
+   */
   max: PropTypes.number,
+  /**
+   * @property {PropTypes.number} min - The smallest possible value. Defaults to 0.
+   */
   min: PropTypes.number,
+  /**
+   * @property {PropTypes.func} onActive - Hover handler. The hovered series index is passed as an argument. When the user is ceases to hover over the component, undefined is passed as an argument.
+   */
   onActive: PropTypes.func,
+  /**
+   * @property {[PropTypes.shape]} series - An array of objects describing the data. Either this or the value property must be provided. The spiral type Meter also accepts alabel property for the objects in the series.*
+   */
   series: PropTypes.arrayOf(PropTypes.shape({
     colorIndex: PropTypes.string,
     onClick: PropTypes.func,
     label: PropTypes.string, // only for Spiral
     value: PropTypes.number.isRequired
   })),
+  /**
+   * @property {['xsmall', 'small', 'medium', 'large', 'xlarge']} size - The size of the Meter. Defaults to medium. Currently, the spiral type Meter does not respond to this property.
+   */
   size: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
+  /**
+   * @property {PropTypes.bool} stacked - Whether slices for multiple series values should be stacked together in the same slot or shown in separate slots.* Defaults to false.
+   */
   stacked: PropTypes.bool,
   tabIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.number} threshold - Optional threshold value.
+   */
   threshold: PropTypes.number,
+  /**
+   * @property {[PropTypes.shape]} thresholds - An array of objects describing thresholds.
+   */
   thresholds: PropTypes.arrayOf(PropTypes.shape({
     value: PropTypes.number.isRequired,
     colorIndex: PropTypes.string
   })),
+  /**
+   * @property {['bar', 'arc', 'circle', 'spiral']} type - Whether to draw a bar, an arc, a circle, or a spiral.
+   */
   type: PropTypes.oneOf(['bar', 'arc', 'circle', 'spiral']),
+  /**
+   * @property {PropTypes.number} value - The current value.
+   */
   value: PropTypes.number,
+  /**
+   * @property {PropTypes.bool} vertical - Whether to orient a bar or arc Meter vertically.
+   */
   vertical: PropTypes.bool,
   responsive: PropTypes.bool
 };

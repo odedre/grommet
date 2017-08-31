@@ -25,6 +25,25 @@ function getHoverModifier(hoverIndicator) {
   }
 }
 
+/**
+ * #Button
+ * A button. We have a separate component from the browser base so we can style it.
+ * 
+ * ```js
+ * import Button from 'grommet/components/Button';
+ * 
+ * <Button icon={<Edit />}
+ *   label='Label'
+ *   onClick={...}
+ *   href='#'
+ *   primary={true}
+ *   secondary={true}
+ *   accent={true}
+ *   critical={true}
+ *   plain={true}
+ *   path='/' />
+ * ```
+ */
 export default class Button extends Component {
 
   constructor () {
@@ -191,11 +210,26 @@ export default class Button extends Component {
 
 Button.propTypes = {
   a11yTitle: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} accent - Whether this is an accent button.
+   */
   accent: PropTypes.bool,
   align: PropTypes.oneOf(['start', 'center', 'end']),
+  /**
+   * @property {PropTypes.bool} box - Whether the button should support Box props. This is useful if you want your children to be a flexbox container. Default is false.
+   */
   box: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} critical - Whether this is a critical button.
+   */
   critical: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} fill - Whether the button expands to fill all of the available width and height.
+   */
   fill: PropTypes.bool,
+  /**
+   * @property {} hoverIndicator - Optional. The hover indicator to apply when the user is mousing over the button. An object can be also be specified for color index support: {background: 'neutral-2'}. This prop is meant to be used only with plain Buttons.
+   */
   hoverIndicator: PropTypes.oneOfType([
     PropTypes.oneOf(['background']),
     PropTypes.shape({
@@ -205,16 +239,46 @@ Button.propTypes = {
       ])
     })
   ]),
+  /**
+   * @property {PropTypes.string} href - If specified, the button will behave like an anchor tag.
+   */
   href: PropTypes.string,
+  /**
+   * @property {PropTypes.element} icon - Icon element to place in the button. See Icon.
+   */
   icon: PropTypes.element,
+  /**
+   * @property {PropTypes.node} label - Label text to place in the button.
+   */
   label: PropTypes.node,
+  /**
+   * @property {['push', 'replace']} method - Valid only when used with path. Indicates whether the browser history should be appended to or replaced. The default is push.
+   */
   method: PropTypes.oneOf(['push', 'replace']),
+  /**
+   * @property {PropTypes.func} onClick - Click handler. Not setting this property and not specifying a path causes the Button to be disabled.
+   */
   onClick: PropTypes.func,
+  /**
+   * @property {PropTypes.string} path - React-router path to navigate to when clicked.
+   */
   path: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} plain - Whether this is a plain button with no border or padding. Use this when wrapping children that provide the complete visualization of the control. Do not use plain with label or icon properties.
+   */
   plain: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} primary - Whether this is a primary button. There should be at most one per page or screen.
+   */
   primary: PropTypes.bool,
   reverse: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} secondary - Whether this is a secondary button.
+   */
   secondary: PropTypes.bool,
+  /**
+   * @property {['button', 'reset', 'submit']} type - The type of button. Set the type to submit for the default button on forms. Defaults to button.
+   */
   type: PropTypes.oneOf(['button', 'reset', 'submit'])
 };
 

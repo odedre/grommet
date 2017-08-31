@@ -123,6 +123,32 @@ AnimateChild.defaultProps = {
   visible: false
 };
 
+/**
+ * #Animate
+ * An animation wrapper to transition components in & out.
+ * 
+ * ```js
+ *  import Animate from 'grommet/components/Animate';
+ * 
+ * <Box pad={{"between": "medium"}}
+ *   align='center'>
+ *   <Button label='Leave'
+ *     primary={true}
+ *     onClick={...} />
+ *   <Animate enter={{"animation": "fade", "duration": 1000, "delay": 0}}
+ *     keep={true}>
+ *     <Box direction='row'>
+ *       <Box colorIndex='light-2'
+ *         margin='medium'
+ *         pad='large'>
+ *         <Value value={1} />
+ *       </Box>
+ *     </Box>
+ *   </Animate>
+ * </Box>
+ * ```
+ */
+
 export default class Animate extends Component {
 
   constructor(props, context) {
@@ -231,23 +257,44 @@ const ANIMATIONS =
   ['fade', 'slide-up', 'slide-down', 'slide-left', 'slide-right', 'jiggle'];
 
 Animate.propTypes = {
+  /**
+   * @property {[PropTypes.string|PropTypes.func]} component - Wrapping component. Defaults to <div/>.
+   */
   component: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.func
   ]),
+  /**
+   * @property {PropTypes.shape} enter - Animation when component is entering. Possible animations:fade|slide-up|slide-down|slide-left|slide-right
+   */
   enter: PropTypes.shape({
     animation: PropTypes.oneOf(ANIMATIONS).isRequired,
     duration: PropTypes.number,
     delay: PropTypes.number
   }).isRequired,
+  /**
+   * @property {PropTypes.bool} keep - Whether to keep or remove element from the DOM. Defaults to false.
+   */
   keep: PropTypes.bool,
+  /**
+   * @property {PropTypes.shape} leave - Animation when component is leaving. Defaults to enter animation.
+   */
   leave: PropTypes.shape({
     animation: PropTypes.oneOf(ANIMATIONS).isRequired,
     duration: PropTypes.number,
     delay: PropTypes.number
   }),
+  /**
+   * @property {PropTypes.func} onAppear - Callback for when the animation appears.
+   */
   onAppear: PropTypes.func,
+  /**
+   * @property {PropTypes.func}onLeave - Callback for when the animation leaves.
+   */
   onLeave: PropTypes.func,
+  /**
+   * @property {[PropTypes.oneOf(['scroll'])|PropTypes.bool]} visible - Toggle visibility. When set to scroll, the animation will happen when the component scrolls into view. Defaults to false.
+   */
   visible: PropTypes.oneOfType([
     PropTypes.oneOf(['scroll']),
     PropTypes.bool

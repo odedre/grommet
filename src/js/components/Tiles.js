@@ -24,6 +24,44 @@ const TILE = CSSClassnames.TILE;
 const SELECTED_CLASS = `${TILE}--selected`;
 const ACTIVE_CLASS = `${TILE}--active`;
 
+/**
+ * #Tiles
+ * A grid of items. The preferred method of populating Tiles is to use Tile children.
+ * 
+ * Properties for [Box](#) are also available for Tiles.
+ * ```js
+ * import Tiles from 'grommet/components/Tiles';
+ * import Tile from 'grommet/components/Tile';
+ * 
+ * <Tiles fill={true}
+ *   flush={false}>
+ *   <Tile>
+ *     <Card thumbnail='/img/carousel-1.png'
+ *       heading='Sample Heading'
+ *       label='Sample Label'
+ *       description='Sample description providing more details.' />
+ *   </Tile>
+ *   <Tile>
+ *     <Card thumbnail='/img/carousel-1.png'
+ *       heading='Sample Heading'
+ *       label='Sample Label'
+ *       description='Sample description providing more details.' />
+ *   </Tile>
+ *   <Tile>
+ *     <Card thumbnail='/img/carousel-1.png'
+ *       heading='Sample Heading'
+ *       label='Sample Label'
+ *       description='Sample description providing more details.' />
+ *   </Tile>
+ *   <Tile>
+ *     <Card thumbnail='/img/carousel-1.png'
+ *       heading='Sample Heading'
+ *       label='Sample Label'
+ *       description='Sample description providing more details.' />
+ *   </Tile>
+ * </Tiles>
+ * ```
+ */
 export default class Tiles extends Component {
 
   constructor(props, context) {
@@ -511,14 +549,32 @@ Tiles.contextTypes = {
 };
 
 Tiles.propTypes = {
+  /**
+   * @property {PropTypes.bool} fill - Function that will be called when more data is needed.
+   */
   fill: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} flush - Function that will be called when more data is needed.
+   */
   flush: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onMore - Function that will be called when more data is needed.
+   */
   onMore: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - Function that will be called when more data is needed.
+   */
   onSelect: PropTypes.func,
+  /**
+   * @property {[PropTypes.bool|PropTypes.oneOf(['multiple'])]} selectable - Function that will be called when more data is needed.
+   */
   selectable: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['multiple'])
   ]),
+  /**
+   * @property {[PropTypes.number|PropTypes.arrayOf(PropTypes.number)]} selected - Function that will be called when more data is needed.
+   */
   selected: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number)

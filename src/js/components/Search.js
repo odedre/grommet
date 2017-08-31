@@ -18,6 +18,21 @@ const CLASS_ROOT = CSSClassnames.SEARCH;
 const INPUT = CSSClassnames.INPUT;
 const BACKGROUND_COLOR_INDEX = CSSClassnames.BACKGROUND_COLOR_INDEX;
 
+/**
+ * #Search
+ * A responsive search control.
+ * 
+ * ```js
+ * import Search from 'grommet/components/Search';
+ * 
+ * <Search placeHolder='Search'
+ *   inline={true}
+ *   suggestions={['first', 'second', 'third', 'fourth']}
+ *   value=''
+ *   onSelect={...}
+ *   onDOMChange={...} />
+ * ```
+ */
 export default class Search extends Component {
 
   constructor(props, context) {
@@ -489,21 +504,54 @@ Search.defaultProps = {
 
 Search.propTypes = {
   align: PropTypes.string,
+  /**
+   * @property {PropTypes.string} defaultValue - 
+   */
   defaultValue: PropTypes.string,
+  /**
+   * @property {PropTypes.custom} dropAlign - 
+   */
   dropAlign: dropAlignPropType,
   dropColorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} fill - 
+   */
   fill: PropTypes.bool,
+  /**
+   * @property {['start', 'end']} iconAlign - 
+   */
   iconAlign: PropTypes.oneOf(['start', 'end']),
   id: PropTypes.string,
   initialFocus: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} inline - 
+   */
   inline: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onDOMChange - 
+   */
   onDOMChange: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - 
+   */
   onSelect: PropTypes.func,
   onKeyDown: PropTypes.func,
   pad: PropTypes.oneOf(['small', 'medium']),
+  /**
+   * @property {PropTypes.string} placeHolder - 
+   */
   placeHolder: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} responsive - 
+   */
   responsive: PropTypes.bool,
+  /**
+   * @property {['small', 'medium', 'large']} size - 
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {} suggestions - 
+   */
   suggestions: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
@@ -513,5 +561,8 @@ Search.propTypes = {
       PropTypes.string
     ])
   ),
+  /**
+   * @property {PropTypes.func} onMore - Function that will be called when more data is needed.
+   */
   value: PropTypes.string
 };

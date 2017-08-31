@@ -8,6 +8,17 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.IMAGE;
 
+/**
+ * #Image
+ * 
+ * ```js
+ * import Image from 'grommet/components/Image';
+ * 
+ * <Image src='/img/carousel-1.png'
+ *   alt='Sample alt'
+ *   caption='Sample caption' />
+ * ```
+ */
 export default class Image extends Component {
   render () {
     const {
@@ -57,20 +68,41 @@ export default class Image extends Component {
 }
 
 Image.propTypes = {
+  /**
+   * @property {PropTypes.element} align - How to align the image when full. You can specify one of top|bottom and/or one of left|right. If not provided, the image is centered.
+   */
   align: PropTypes.shape({
     bottom: PropTypes.boolean,
     left: PropTypes.boolean,
     right: PropTypes.boolean,
     top: PropTypes.boolean
   }),
+  /**
+   * @property {PropTypes.string} alt - Alternate text for screen readers.
+   */
   alt: PropTypes.string,
+  /**
+   * @property {[PropTypes.bool|PropTypes.string]} caption - Whether to add image caption or not. If set to true, caption text will be the image alt value. Also, caption can receive the text to be used instead of the default one.
+   */
   caption: PropTypes.oneOfType([
     PropTypes.bool, PropTypes.string
   ]),
+  /**
+   * @property {['contain', 'cover']} fit - How the image should be scaled to fit in the container. Setting this property also sets full='true'.
+   */
   fit: PropTypes.oneOf(['contain', 'cover']),
+  /**
+   * @property {[true, 'horizontal', 'vertical', false]} full - Whether the image should expand to fill the available width and/or height.
+   */
   full: PropTypes.oneOf([true, 'horizontal', 'vertical', false]),
   mask: PropTypes.bool,
+  /**
+   * @property {['small', 'medium', 'large', 'thumb']} size - The size of the Image. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'thumb']),
+  /**
+   * @property {PropTypes.string} src - The actual image file source.
+   */
   src: PropTypes.string,
   title: PropTypes.string
 };

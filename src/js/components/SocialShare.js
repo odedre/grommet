@@ -9,6 +9,19 @@ import SocialGooglePlusIcon from './icons/base/SocialGooglePlus';
 import SocialLinkedinIcon from './icons/base/SocialLinkedin';
 import SocialMailIcon from './icons/base/SocialMail';
 
+/**
+ * #Social Share
+ * A social media share icon button.
+ * 
+ * ```js
+ * import SocialShare from 'grommet/components/SocialShare';
+ *  
+ * <SocialShare link='https://grommet.io'
+ *   type='email'
+ *   title='Sample Title'
+ *   text='Sample text' />
+ * ```
+ */
 export default class SocialShare extends Component {
   render () {
     const {
@@ -66,9 +79,21 @@ SocialShare.propTypes = {
   a11yTitle: PropTypes.string,
   className: PropTypes.string,
   colorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.string} link - Link to share.
+   */
   link: PropTypes.string.isRequired,
+  /**
+   * @property {PropTypes.string} text - Summary or description of link to be shared. Only valid with twitter, linkedin, and email type.
+   */
   text: PropTypes.string,
+  /**
+   * @property {PropTypes.string} title - Title of the link to be shared. Only valid withlinkedin and email type.
+   */
   title: PropTypes.string,
+  /**
+   * @property {['email', 'facebook', 'twitter', 'linkedin', 'google']} type - Which social network to share link to.
+   */
   type: PropTypes.oneOf(['email', 'facebook', 'twitter', 'linkedin',
     'google']).isRequired
 };

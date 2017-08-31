@@ -10,6 +10,81 @@ import Intl from '../utils/Intl';
 const CLASS_ROOT = CSSClassnames.MAP;
 const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
 
+/**
+ * #Map
+ * Shows a graph of nodes and links between them.
+ * 
+ * ```js
+ * import Map from 'grommet/components/Map';
+ * 
+ * <Map vertical={true}
+ *   data={{
+ *   "categories": [
+ *     {
+ *       "id": "category-1",
+ *       "label": "First category",
+ *       "items": [
+ *         {
+ *           "id": "item-1-1",
+ *           "label": "First item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  First item\n</Box>
+ *         },
+ *         {
+ *           "id": "item-1-2",
+ *           "label": "Second item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  Second item\n</Box>
+ *         },
+ *         {
+ *           "id": "item-1-3",
+ *           "label": "Third item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  Third item\n</Box>
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "id": "category-2",
+ *       "label": "Second category",
+ *       "items": [
+ *         {
+ *           "id": "item-2-1",
+ *           "label": "Fourth item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  Fourth item\n</Box>
+ *         },
+ *         {
+ *           "id": "item-2-2",
+ *           "label": "Fifth item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  Fifth item\n</Box>
+ *         }
+ *       ]
+ *     },
+ *     {
+ *       "id": "category-3",
+ *       "label": "Third category",
+ *       "items": [
+ *         {
+ *           "id": "item-3-1",
+ *           "label": "Sixth item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  Sixth item\n</Box>
+ *         },
+ *         {
+ *           "id": "item-3-2",
+ *           "label": "Seventh item",
+ *           "node": <Box colorIndex='grey-5'\n  pad='small'>\n  Seventh item\n</Box>
+ *         }
+ *       ]
+ *     }
+ *   ],
+ *   "links": [
+ *     {"parentId": "item-1-1", "childId": "item-2-2"},
+ *     {"parentId": "item-1-2", "childId": "item-2-2"},
+ *     {"parentId": "item-1-2", "childId": "item-2-1"},
+ *     {"parentId": "item-2-2", "childId": "item-3-1"},
+ *     {"parentId": "item-2-1", "childId": "item-3-2"}
+ *   ]
+ * }} />
+ * ```
+ */
+
 export default class ResourceMap extends Component {
 
   constructor(props, context) {
@@ -308,7 +383,13 @@ ResourceMap.contextTypes = {
 };
 
 ResourceMap.propTypes = {
+  /**
+   * @property {PropTypes.string} active - The id of the currently active item, if any.
+   */
   active: PropTypes.string,
+  /**
+   * @property {PropTypes.shape} data - An array of objects describing the data.
+   */
   data: PropTypes.shape({
     categories: PropTypes.arrayOf(PropTypes.shape({
       id: PropTypes.string,
@@ -325,8 +406,17 @@ ResourceMap.propTypes = {
       parentId: PropTypes.string.isRequired
     }))
   }).isRequired,
+  /**
+   * @property {PropTypes.string} linkColorIndex - The color identifier to use for the link lines. For example: 'graph-1'. See Color for possible values.
+   */
   linkColorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onActive - Hover handler. The hovered id is passed as an argument. When the user is ceases to hover over an item, undefined is passed as an argument.
+   */
   onActive: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} vertical - Whether to orient the map vertically.
+   */
   vertical: PropTypes.bool
 };
 

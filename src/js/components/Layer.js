@@ -151,6 +151,20 @@ LayerContents.childContextTypes = {
   store: PropTypes.object
 };
 
+/**
+ * #Layer
+ * A modal overlay. This could contain a [Form](#) or an [Article](#).
+ * 
+ * ```js
+ * import Layer from 'grommet/components/Layer';
+ * 
+ * <Layer closer={true}
+ *   flush={true}
+ *   onClose={...}>
+ *   <SampleArticle />
+ * </Layer>
+ * ```
+ */
 export default class Layer extends Component {
 
   componentDidMount () {
@@ -301,14 +315,32 @@ export default class Layer extends Component {
 }
 
 Layer.propTypes = {
+  /**
+   * @property {['center', 'top', 'bottom', 'left', 'right']} align - Which direction the layer contents should emanate from.
+   */
   align: PropTypes.oneOf(['center', 'top', 'bottom', 'left', 'right']),
+  /**
+   * @property {[PropTypes.node|PropTypes.bool]} closer - Adds a visible control to close the layer. If the caller provides a node, it is the caller's responsibility to listen to events from the node.
+   */
   closer: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.bool
   ]),
+  /**
+   * @property {PropTypes.bool} flush - Whether the contents are flush with the edges or not. Defaults to false.
+   */
   flush: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} hidden - Whether the contents are rendered offscreen. Defaults to false.
+   */
   hidden: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} peek - Whether the hidden contents are shown just a bit. Defaults to false.
+   */
   peek: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onClose - Function that will be called when the user clicks on the closer control. Providing this function is required when the closer property is true. Clicking the closer control does not automatically cause the Layer to be removed. The recipient of this callback can still decide whether to continue rendering the Layer or not.
+   */
   onClose: PropTypes.func
 };
 

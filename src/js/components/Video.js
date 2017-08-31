@@ -13,6 +13,29 @@ import throttle from '../utils/Throttle';
 const CLASS_ROOT = CSSClassnames.VIDEO;
 const BACKGROUND_COLOR_INDEX = CSSClassnames.BACKGROUND_COLOR_INDEX;
 
+/**
+ * #Video
+ * Video built on the HTML5 video element.
+ * 
+ * Callers must include child <source> elements according to the HTML5 <video> specification.
+ * 
+ * ```js
+ * import Video from 'grommet/components/Video';
+ * 
+ * <Video autoPlay={true}
+ *   full={true}
+ *   loop={true}
+ *   muted={true}
+ *   poster='/img/mobile_first.jpg'
+ *   shareLink='http://grommet.io'
+ *   shareText='Sample share text'
+ *   timeline={[{"label": "Chapter 1", "time": 0}, {"label": "Chapter 2", "time": 10}, {"label": "Chapter 3", "time": 20}]}
+ *   title='Sample Title'>
+ *   <source src='/video/test.mp4'
+ *     type='video/mp4' />
+ * </Video>
+ * ```
+ */
 export default class Video extends Component {
 
   constructor(props, context) {
@@ -296,29 +319,77 @@ export default class Video extends Component {
 }
 
 Video.propTypes = {
+  /**
+   * @property {PropTypes.shape} align - How to align the video when full. You can specify one of top|bottom and/or one of left|right. If not provided, the video is centered.
+   */
   align: PropTypes.shape({
     bottom: PropTypes.boolean,
     left: PropTypes.boolean,
     right: PropTypes.boolean,
     top: PropTypes.boolean
   }),
+  /**
+   * @property {PropTypes.bool} allowFullScreen - Enables fullscreen/expand control button on player.
+   */
   allowFullScreen: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} autoPlay - Enables automatic playback of the video as soon as it is loaded. Defaults to false.
+   */
   autoPlay: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} colorIndex - The color identifier to use for the background color. For example: 'neutral-1'. This is visible when a poster image is not the same aspect ratio as the video.
+   */
   colorIndex: PropTypes.string,
+  /**
+   * @property {['contain', 'cover']} fit - How the video should be scaled to fit in the container. Setting this property also sets full='true'.
+   */
   fit: PropTypes.oneOf(['contain', 'cover']),
+  /**
+   * @property {[true, 'horizontal', 'vertical', false]} full - Whether the image should expand to fill the available width and/or height.
+   */
   full: PropTypes.oneOf([true, 'horizontal', 'vertical', false]),
+  /**
+   * @property {PropTypes.bool} loop - Enables continuous video looping. Defaults to false.
+   */
   loop: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} muted - Enables video muting. This option is best used with the autoPlay flag. Defaults to false.
+   */
   muted: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} poster - Poster image to show before the video first plays.
+   */
   poster: PropTypes.string,
+  /**
+   * @property {PropTypes.string} shareLink - Link to be used for social media sharing. Shown at the end of the video.
+   */
   shareLink: PropTypes.string,
+  /**
+   * @property {PropTypes.string} shareHeadline - Headline to be used for social media sharing.
+   */
   shareHeadline: PropTypes.string,
+  /**
+   * @property {PropTypes.string} shareText - Text to be used for social media sharing.
+   */
   shareText: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} showControls - Show controls such as play button, progress bar, etc. on top of video. Defaults to true.
+   */
   showControls: PropTypes.bool,
+  /**
+   * @property {['small', 'medium', 'large']} size - The width of the Video. Defaults to medium unless the full option is specified. The height will adapt to the aspect ratio of the video.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {[PropTypes.shape]} timeline - An array of: {label: <string>, seconds: <number>} used to indicate chapter markers.
+   */
   timeline: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     time: PropTypes.number
   })),
+  /**
+   * @property {PropTypes.node} title - Descriptive title.
+   */
   title: PropTypes.node
 };
 

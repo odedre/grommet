@@ -48,6 +48,53 @@ function immediateTableChildOnly(result, tableParent) {
   return immediateChild;
 }
 
+/**
+ * #Table
+ * Table of items. The preferred method of populating rows in the Table is to use TableRows inside a child <tbody> element. Callers can also specify a [TableHeader](#) if a header is needed.
+
+ * import Table from 'grommet/components/Table';
+ * import TableRow from 'grommet/components/TableRow';
+ * 
+ * <Table>
+ *   <thead>
+ *     <tr>
+ *       <th>
+ *         Id
+ *       </th>
+ *       <th>
+ *         Name
+ *       </th>
+ *       <th>
+ *         Note
+ *       </th>
+ *     </tr>
+ *   </thead>
+ *   <tbody>
+ *     <TableRow>
+ *       <td>
+ *         1
+ *       </td>
+ *       <td>
+ *         Alan
+ *       </td>
+ *       <td className='secondary'>
+ *         plays accordion
+ *       </td>
+ *     </TableRow>
+ *     <TableRow>
+ *       <td>
+ *         2
+ *       </td>
+ *       <td>
+ *         Chris
+ *       </td>
+ *       <td className='secondary'>
+ *         drops the mic
+ *       </td>
+ *     </TableRow>
+ *   </tbody>
+ * </Table>
+ */
 export default class Table extends Component {
 
   constructor(props, context) {
@@ -579,14 +626,32 @@ Table.contextTypes = {
 
 Table.propTypes = {
   a11yTitle: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onMore - Function that will be called when more data is needed. When this callback is provided, it is an indication that more data could be added if the user scrolls to the bottom of the table. When present, Table will add a spinner to the bottom of the table and listen for the user scrolling down such that it becomes visible. When the user scrolls to the bottom, this callback will be called. The expectation is that the the caller will add the next chunk of data into the table.
+   */
   onMore: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - Function that will be called when the user selects something. When only one item is selected, it returns the zero based index for that item. When multiple items are selected, it returns an array of those item's zero based indexes.
+   */
   onSelect: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} responsive - Whether rows should be switched to a column layout when the display area narrows. Defaults to true.
+   */
   responsive: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} scrollable
+   */
   scrollable: PropTypes.bool,
+  /**
+   * @property {[PropTypes.bool|PropTypes.oneOf(['multiple'])]} selectable - Whether rows are selectable. multiple indicates that multiple rows may be selected
+   */
   selectable: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['multiple'])
   ]),
+  /**
+   * @property {[PropTypes.number|PropTypes.arrayOf(PropTypes.number)]} selected - The currently selected item(s) using a zero based index.
+   */
   selected: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number)

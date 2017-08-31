@@ -21,6 +21,22 @@ const CLASS_ROOT = CSSClassnames.SELECT;
 const INPUT = CSSClassnames.INPUT;
 const FORM_FIELD = CSSClassnames.FORM_FIELD;
 
+/**
+ * #Select
+ * An select-like field with optional search capability.
+ * 
+ * ```js
+ * import Select from 'grommet/components/Select';
+ * 
+ * <Select placeHolder='None'
+ *   inline={true}
+ *   multiple={true}
+ *   onSearch={...}
+ *   options={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']}
+ *   value={undefined}
+ *   onChange={...} />
+ * ```
+ */
 export default class Select extends Component {
 
   constructor(props, context) {
@@ -478,13 +494,34 @@ const valueType = PropTypes.oneOfType([
 ]);
 
 Select.propTypes = {
+  /**
+   * @property {PropTypes.bool} inline - Whether to display the options inline or via a drop down. The default is false.
+   */
   inline: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} multiple - Whether to allow multiple options to be selected. The default is false.
+   */
   multiple: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onSearch - Function that will be called when the user types in the search input. If this property is not provided, no search field will be rendered.
+   */
   onSearch: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onChange - Function that will be called when the user selects an option. The target corresponds to the embedded input element, allowing you to distinguish which component triggered the event. The option contains the object chosen from the supplied options. The value contains all selected options when multiple={true}.
+   */
   onChange: PropTypes.func, // (value(s))
+  /**
+   * @property {PropTypes.string} placeHolder - Placeholder text to use when the search input is empty.
+   */
   placeHolder: PropTypes.string,
   searchPlaceHolder: PropTypes.string,
+  /**
+   * @property {[valueType]} options - Options can be either a string or an object. The label property of option objects can be a string or a React element. This allows rendering richer option representations.
+   */
   options: PropTypes.arrayOf(valueType).isRequired,
+  /**
+   * @property {[valueType|PropTypes.arrayOf(valueType)]} value - What text to put in the input.
+   */
   value: PropTypes.oneOfType([valueType, PropTypes.arrayOf(valueType)])
 };
 

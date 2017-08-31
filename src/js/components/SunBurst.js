@@ -14,6 +14,73 @@ const COLOR_INDEX = CSSClassnames.COLOR_INDEX;
 const UNIT_FACTOR = baseUnit * 0.75;
 const PAD_FACTOR = baseUnit * 8;
 
+/**
+ * #SunBurst
+ * A SunBurst visualization.
+ * 
+ * ```js
+ * import SunBurst from 'grommet/components/SunBurst';
+ * 
+ * <Box direction='row'
+ *   align='center'
+ *   pad={{"between": "medium"}}>
+ *   <SunBurst data={[{
+ *   "label": "root-1",
+ *   "value": 50,
+ *   "colorIndex": "neutral-1",
+ *   "children": [
+ *     {
+ *       "label": "sub-1",
+ *       "value": 20,
+ *       "colorIndex": "neutral-1",
+ *       "total": 10,
+ *       "children": [
+ *         {"label": "leaf-1", "value": 5, "colorIndex": "neutral-1"},
+ *         {"label": "leaf-2", "value": 1, "colorIndex": "neutral-1"}
+ *       ]
+ *     },
+ *     {"label": "sub-2", "value": 20, "colorIndex": "neutral-1"},
+ *     {"label": "sub-3", "value": 10, "colorIndex": "neutral-1"}
+ *   ]
+ * }, {
+ *   "label": "root-2",
+ *   "value": 30,
+ *   "colorIndex": "neutral-2",
+ *   "children": [
+ *     {"label": "sub-4", "value": 15, "colorIndex": "neutral-2"},
+ *     {"label": "sub-5", "value": 10, "colorIndex": "neutral-1"},
+ *     {"label": "sub-6", "value": 5, "colorIndex": "neutral-3"}
+ *   ]
+ * }, {
+ *   "label": "root-3",
+ *   "value": 20,
+ *   "colorIndex": "neutral-3",
+ *   "children": [
+ *     {"label": "sub-7", "value": 10, "colorIndex": "neutral-1"},
+ *     {"label": "sub-8", "value": 7, "colorIndex": "neutral-1"},
+ *     {"label": "sub-9", "value": 3, "colorIndex": "neutral-3"}
+ *   ]
+ * }]}
+ *     active={[0, 0, 0]}
+ *     label={<Legend series={[{
+ *   "colorIndex": "neutral-1",
+ *   "label": "root-1",
+ *   "value": <Value value={50}\n    size='small' />
+ * }, {
+ *   "colorIndex": "neutral-1",
+ *   "label": "sub-1",
+ *   "value": <Value value={20}\n    size='small' />
+ * }, {
+ *   "colorIndex": "neutral-1",
+ *   "label": "leaf-1",
+ *   "value": <Value value={5}\n    size='small' />
+ * }]} />}
+ *     onActive={...}
+ *     onClick={...} />
+ *   <Legend series={[{"label": "on target", "colorIndex": "neutral-1"}, {"label": "over", "colorIndex": "neutral-2"}, {"label": "under", "colorIndex": "neutral-3"}]} />
+ * </Box>
+ * ```
+ */
 export default class SunBurst extends Component {
 
   constructor(props, context) {
@@ -318,16 +385,34 @@ export default class SunBurst extends Component {
 
 SunBurst.propTypes = {
   a11yTitle: PropTypes.string,
+  /**
+   * @property {[PropTypes.number]} active - The currently active index path, if any.
+   */
   active: PropTypes.arrayOf(PropTypes.number),
+  /**
+   * @property {[PropTypes.shape]} data - An array of objects describing the data. The value property must be specified. If the total property is specified, it sets the total value for the children. If not specified, the total is the sum of the values. The children property objects are the same structure as the items in the data array. NOTE: Currently the graphic does not work well at depths greater than three.
+   */
   data: PropTypes.arrayOf(PropTypes.shape({
     children: PropTypes.arrayOf(PropTypes.object),
     colorIndex: PropTypes.string,
     total: PropTypes.number, // sum of all values otherwise
     value: PropTypes.number.isRequired
   })),
+  /**
+   * @property {PropTypes.node} label - Label to show in a corner.
+   */
   label: PropTypes.node,
+  /**
+   * @property {PropTypes.func} onActive - Hover handler. The hovered indexes are passed as the argument. When the user is ceases to hover over the component, undefined is passed as the argument.
+   */
   onActive: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onClick - Click handler. The clicked index path is passed as the argument.
+   */
   onClick: PropTypes.func,
+  /**
+   * @property {['small', 'medium', 'large', 'xlarge', 'full']} size - The size of the SunBurst. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'xlarge', 'full'])
 };
 

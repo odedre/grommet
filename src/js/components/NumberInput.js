@@ -11,6 +11,16 @@ import SubtractIcon from './icons/base/Subtract';
 const CLASS_ROOT = CSSClassnames.NUMBER_INPUT;
 const INPUT = CSSClassnames.INPUT;
 
+/**
+ * #NumberInput
+ * A number input in a web form. We have a separate component from the browser base so we can style it.
+ * ```js
+ * import NumberInput from 'grommet/components/NumberInput';
+ * 
+ * <NumberInput value={10}
+ *  onChange={...} />
+ * ```
+ */
 export default class NumberInput extends Component {
 
   constructor(props, context) {
@@ -105,13 +115,40 @@ export default class NumberInput extends Component {
 }
 
 NumberInput.propTypes = {
+  /**
+   * @property {PropTypes.number} defaultValue - Same as React <input defaultValue= >.
+   */
   defaultValue: PropTypes.number,
+  /**
+   * @property {PropTypes.bool} disabled - Same as React <input disabled= >. Also adds a hidden input element with the same name so form submissions work.
+   */
   disabled: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} id - The DOM id attribute value to use for the underlying<input> element.
+   */
   id: PropTypes.string,
+  /**
+   * @property {PropTypes.number} max - Maximum value.
+   */
   max: PropTypes.number,
+  /**
+   * @property {PropTypes.number} min - Minimum value.
+   */
   min: PropTypes.number,
+  /**
+   * @property {PropTypes.string} name - The DOM name attribute value to use for the underlying<input> element.
+   */
   name: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onChange - Same as React <input onChange= >.
+   */
   onChange: PropTypes.func,
+  /**
+   * @property {PropTypes.number} step - Steps to increase and decrease by.
+   */
   step: PropTypes.number,
+  /**
+   * @property {[PropTypes.number|PropTypes.string]} value -The value to put in the input. 
+   */
   value: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };

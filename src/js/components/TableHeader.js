@@ -7,6 +7,47 @@ import Box from './Box';
 import AscIcon from './icons/base/LinkDown';
 import DescIcon from './icons/base/LinkUp';
 
+/**
+ * #TableHeader
+ * A table header that can be used as a sort control.
+ * 
+ * ```js
+ * import TableHeader from 'grommet/components/TableHeader';
+ * 
+ * <Table>
+ *   <TableHeader labels={['Name', 'Note']}
+ *     sortIndex={0}
+ *     sortAscending={true}
+ *     onSort={...} />
+ *   <tbody>
+ *     <TableRow>
+ *       <td>
+ *         Alan
+ *       </td>
+ *       <td>
+ *         plays accordion
+ *       </td>
+ *     </TableRow>
+ *     <TableRow>
+ *       <td>
+ *         Chris
+ *       </td>
+ *       <td>
+ *         drops the mic
+ *       </td>
+ *     </TableRow>
+ *     <TableRow>
+ *       <td>
+ *         Tracy
+ *       </td>
+ *       <td>
+ *         travels the world
+ *       </td>
+ *     </TableRow>
+ *   </tbody>
+ * </Table>
+ * ```
+ */
 export default class TableHeader extends Component {
 
   _onSort (index) {
@@ -74,11 +115,23 @@ export default class TableHeader extends Component {
 }
 
 TableHeader.propTypes = {
+  /**
+   * @property {} labels - Header cell contents.
+   */
   labels: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.array
   ])).isRequired,
+  /**
+   * @property {PropTypes.func} onSort - Function that will be called when the user clicks on a header cell. It is passed the index of the cell and which direction to sort in.
+   */
   onSort: PropTypes.func, // (index, ascending?)
+  /**
+   * @property {PropTypes.bool} sortAscending - Indicates which direction the sort is currenly going.
+   */
   sortAscending: PropTypes.bool,
+  /**
+   * @property {PropTypes.number} sortIndex - Indicates which cell is currently being sorted on.
+   */
   sortIndex: PropTypes.number
 };

@@ -10,6 +10,32 @@ import Heading from './Heading';
 import Anchor from './Anchor';
 import Image from './Image';
 
+/**
+ * 
+ * #Markdown
+ * Render [markdown](#) content using Grommet components.
+ *  
+ * ```js
+ * import Markdown from 'grommet/components/Markdown';
+ * 
+ * <Markdown components={{
+ *   "h1": {"props": {"strong": true}},
+ *   "h2": {"props": {"strong": true}},
+ *   "p": {"props": {"size": "large"}},
+ *   "img": {"props": {"size": "small"}}
+ * }}
+ *   content='
+ * # H1
+ * 
+ * Paragraph [link](/).
+ * 
+ * ## H2
+ * 
+ * ![image](/img/carousel-1.png)
+ * ' />
+ * ```
+ */
+
 let GrommetMarkdown = (props) => {
 
   const { content, components } = props;
@@ -52,7 +78,13 @@ let GrommetMarkdown = (props) => {
 };
 
 GrommetMarkdown.propTypes = {
+  /**
+   * @property {PropTypes.string} content - The markdown text to render.
+   */
   content: PropTypes.string,
+  /**
+   * @property {PropTypes.shape} components - Set properties for components used in the markdown rendering. Possible components are 'a', 'h1-h6', 'img', and 'p'
+   */
   components: PropTypes.shape({
     props: PropTypes.object
   })

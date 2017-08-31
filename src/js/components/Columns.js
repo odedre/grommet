@@ -10,6 +10,30 @@ import Responsive from '../utils/Responsive';
 
 const CLASS_ROOT = CSSClassnames.COLUMNS;
 
+/**
+ * #Columns
+ * Organize children into multiple components based on available width.
+ * 
+ * ```js
+ * import Columns from 'grommet/components/Columns';
+ * 
+ * <Columns responsive={false}
+ *   masonry={true}>
+ *   <Box align='center'
+ *     pad='medium'
+ *     margin='small'
+ *     colorIndex='light-2'>
+ *     Box 1
+ *   </Box>
+ *   <Box align='center'
+ *     pad='medium'
+ *     margin='small'
+ *     colorIndex='light-2'>
+ *     Box 2
+ *   </Box>
+ * </Columns>
+ * ```
+ */
 export default class Columns extends Component {
 
   constructor(props, context) {
@@ -261,11 +285,26 @@ export default class Columns extends Component {
 }
 
 Columns.propTypes = {
+  /**
+   * @property {['start', 'center', 'between', 'end']} justify - How to align the contents along the main axis.
+   */
   justify: PropTypes.oneOf(['start', 'center', 'between', 'end']),
   margin: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {PropTypes.bool} masonry - Whether to fill the columns from left-to-right based on the component width (set with size). Defaults to false. The max number of columns can be set with maxCount.
+   */
   masonry: PropTypes.bool,
+  /**
+   * @property {PropTypes.number} maxCount - Number of columns to allow for masonry option, based on component width. Responds based on the width of the column children (set with size).
+   */
   maxCount: PropTypes.number,
+  /**
+   * @property {PropTypes.bool} responsive - Whether masonry columns should collapse into single, full-width column when the display area narrows (to achive similar behavior as responsive Tiles). Defaults to true.
+   */
   responsive: PropTypes.bool,
+  /**
+   * @property {['small', 'medium', 'large']} size - The width of each column. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large'])
 };
 

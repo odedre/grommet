@@ -10,6 +10,45 @@ import Box from './Box';
 
 const CLASS_ROOT = CSSClassnames.HEADER;
 
+/**
+ * #Header
+ * Combines Title and Menu elements responsively.
+ * Options for [Box](#) are also available.
+ * 
+ * ```js
+ * import Header from 'grommet/components/Header';
+ * 
+ * <Header fixed={true}
+ *   float={true}>
+ *   <Title>
+ *     Sample Title
+ *   </Title>
+ *   <Box flex={true}
+ *     justify='end'
+ *     direction='row'
+ *     responsive={false}>
+ *     <Search inline={true}
+ *       fill={true}
+ *       size='medium'
+ *       placeHolder='Search'
+ *       dropAlign={{"right": "right"}} />
+ *     <Menu icon={<Actions />}
+ *       dropAlign={{"right": "right"}}>
+ *       <Anchor href='#'
+ *         className='active'>
+ *         First
+ *       </Anchor>
+ *       <Anchor href='#'>
+ *         Second
+ *       </Anchor>
+ *       <Anchor href='#'>
+ *         Third
+ *       </Anchor>
+ *     </Menu>
+ *   </Box>
+ * </Header>
+ * ```
+ */
 export default class Header extends Component {
 
   constructor(props, context) {
@@ -129,9 +168,21 @@ export default class Header extends Component {
 }
 
 Header.propTypes = {
+  /**
+   * @property {PropTypes.bool} fixed - Whether the header is fixed on the page, typically so content below it will scroll under it.
+   */
   fixed: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} float - Whether the header floats above content underneath it.
+   */
   float: PropTypes.bool,
+  /**
+   * @property {['small', 'medium', 'large']} size - The size of the Header. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {PropTypes.bool} splash - Whether to render it in a style suitable for a splash screen.
+   */
   splash: PropTypes.bool,
   ...Box.propTypes
 };

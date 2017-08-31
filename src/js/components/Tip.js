@@ -9,7 +9,19 @@ import Drop from '../utils/Drop';
 
 const CLASS_ROOT = CSSClassnames.TIP;
 
-
+/**
+ * #Tip
+ * An attention getter used to highlight an aspect of the interface that might not be apparent at first glance. This should be used sparingly. Only one Tip should ever be shown on the screen at a time and only when it is referring to an action the user is likely to need or try imminitely.
+ *
+ * ```js
+ * import Tip from 'grommet/components/Tip';
+ * 
+ * <Tip target='actions'
+ *   onClose={...}>
+ *   Available actions
+ * </Tip>
+ * ```
+ */
 export default class Tip extends Component {
 
   constructor (props) {
@@ -108,8 +120,17 @@ export default class Tip extends Component {
 }
 
 Tip.propTypes = {
+  /**
+   * @property {PropTypes.string} colorIndex - The color identifier to use for the background color. For example: accent-1. Only accent colors are available for Tips. Defaults to accent-1
+   */
   colorIndex: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onClose - Called when the user clicks on the Tip, clicks on the target element, or when the target element loses focus.
+   */
   onClose: PropTypes.func.isRequired,
+  /**
+   * @property {PropTypes.string} target - The DOM id or class of the element the Tip should be associated with. The id takes priority over class. If multiple classes are found, the first one will be used.
+   */
   target: PropTypes.string.isRequired
 };
 

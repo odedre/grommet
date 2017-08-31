@@ -25,6 +25,19 @@ function getMaxDecimalDigits(series) {
   return maxDigits;
 }
 
+/**
+ * #Legend
+ * A legend, typically associated with a data visualization such as [Meter](#), [Distribution](#), [SunBurst](#), or [WorldMap](#).
+ * 
+ * ```js
+ * import Legend from 'grommet/components/Legend';
+ * 
+ * <Legend series={[{"label": "Americas", "value": 40, "colorIndex": "graph-1", "onClick": "..."}, {"label": "Europe", "value": 20, "colorIndex": "unset", "onClick": "..."}, {"label": "Asia", "value": 15, "colorIndex": "graph-3", "onClick": "..."}]}
+ *   total={true}
+ *   units='B' />
+ * ```
+ */
+
 export default class Legend extends Component {
 
   constructor(props, context) {
@@ -260,9 +273,18 @@ Legend.defaultProps = {
 };
 
 Legend.propTypes = {
+  /**
+   * @property {PropTypes.number} activeIndex - Which data item should be shown as active, if any.
+   */
   activeIndex: PropTypes.number,
   announce: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onActive - Function that will be called when the user hovers over one of the data items.
+   */
   onActive: PropTypes.func,
+  /**
+   * @property {} series - An array of objects describing the data.
+   */
   series: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.string,
     value: PropTypes.oneOfType([
@@ -282,11 +304,20 @@ Legend.propTypes = {
     ]),
     onClick: PropTypes.func
   })).isRequired,
+  /**
+   * @property {['medium', 'large']} size - The size of the Legend. Defaults to medium.
+   */
   size: PropTypes.oneOf(['medium', 'large']),
+  /**
+   * @property {[PropTypes.bool|PropTypes.node]} total - Whether to show the total of all values.
+   */
   total: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.node
   ]),
+  /**
+   * @property {} units - Optional units to display next to the value label.
+   */
   units: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.shape({

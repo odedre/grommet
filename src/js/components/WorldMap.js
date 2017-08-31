@@ -153,6 +153,19 @@ const coordToLatLon = (coord, origin, extent) => {
   return [lat, lon];
 };
 
+/** 
+ * #WorldMap
+ * A world map of continents.
+ * 
+ * Note: It is a good idea to include a Legend along with this visualization. You can use the same seriesproperty for both WorldMap and Legend.
+ * 
+ * ```js
+ * import WorldMap from 'grommet/components/WorldMap';
+ * 
+ * <WorldMap onSelectPlace={...}
+ *   zoom={true} />
+ * ```
+ */
 export default class WorldMap extends Component {
 
   constructor(props, context) {
@@ -584,10 +597,20 @@ export default class WorldMap extends Component {
 }
 
 WorldMap.propTypes = {
+  /**
+   * @property {PropTypes.string} colorIndex - The color identifier to use when not specified in the series. For example: 'neutral-1'. See Color for possible values.
+   */
   colorIndex: PropTypes.string,
   // onSelectPlace is passed a place coordinate when the user clicks on it
+  /**
+   * @property {PropTypes.func} onSelectPlace - If provided, this function will be called with the coordinates of the place that is clicked. The first argument provides map coordinates. The second argument provides latitude and longitude coordinates.
+   */
   onSelectPlace: PropTypes.func,
   // either continent or place must be provided for a series item
+  
+  /**
+   * @property {[PropTypes.shape]} series - An array of objects describing the data. The available continents are: NorthAmerica, SouthAmerica, Europe, Africa, Asia, and Australia. A place is a two dimensional coordinate on the map. You can use onSelectPlace to interact with the map to select places. Or, you can specify a latitude and longitude. You must specify either a continent or a place in each series item. label is used for accessibility and should always be provided. flag is anything renderable which will be placed over a continent or adjacent to a place. onHover will be passed a single boolean argument indicating whether the user has started or stopped hovering over the item.
+   */
   series: PropTypes.arrayOf(PropTypes.shape({
     continent: PropTypes.oneOf(CONTINENTS.map(c => c.id)),
     colorIndex: PropTypes.string,
@@ -597,5 +620,8 @@ WorldMap.propTypes = {
     onHover: PropTypes.func,
     place: PropTypes.arrayOf(PropTypes.number)
   })),
+  /**
+   * @property {PropTypes.bool} zoom - Whether the map should automatically zoom in to just the continents specified or to the continents continaining the placed specified.
+   */
   zoom: PropTypes.bool
 };

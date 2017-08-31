@@ -75,8 +75,14 @@ AccordionPanel.propTypes = {
   a11yTitle: PropTypes.string,
   active: PropTypes.bool, // set by Accordion
   animate: PropTypes.bool,
+  /**
+   * @property {PropTypes.node} heading - Heading of panel, displayed when panel is collapsed. Required.
+   */
   heading: PropTypes.node.isRequired,
   onChange: PropTypes.func,
+  /**
+   * @property {PropTypes.pad} pad - The amount of padding to put around the Accordion panel heading & it's content.
+   */
   pad: Header.propTypes.pad
 };
 

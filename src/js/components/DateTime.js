@@ -30,6 +30,23 @@ const FORMATS = {
 };
 const TIME_REGEXP = new RegExp('[Hhmsa]');
 
+/**
+ * 
+ * #DateTime
+ * An input field for a date and/or time.
+ * 
+ * ```js
+ * import DateTime from 'grommet/components/DateTime';
+ * 
+ * <Form>
+ *   <FormField>
+ *     <DateTime id='id'
+ *       name='name'
+ *       onChange={...} />
+ *   </FormField>
+ * </Form>
+ * ```
+ */
 export default class DateTime extends Component {
 
   constructor(props, context) {
@@ -309,10 +326,28 @@ DateTime.defaultProps = {
 };
 
 DateTime.propTypes = {
+  /**
+   * @property {PropTypes.string} format - The date format. Available syntax can be seen in the documentation for moment. The default is M/D/YYYY h:mm a.
+   */
   format: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} string - The id attribute of the input.
+   */
   id: PropTypes.string,
+  /**
+   * @property {PropTypes.string} name - The name attribute of the input.
+   */
   name: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onChange - Function that will be called when the user types some text into the input or selects a date from the drop down.
+   */
   onChange: PropTypes.func,
+  /**
+   * @property {PropTypes.number} step - The step granularity of the least significant format element.
+   */
   step: PropTypes.number,
+  /**
+   * @property {[PropTypes.string|PropTypes.object]} value - If a string is specified, it is put in the input. If a Date or moment is specified, it is formatted and put in the input.
+   */
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
 };

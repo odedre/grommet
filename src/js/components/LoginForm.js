@@ -18,6 +18,22 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.LOGIN_FORM;
 
+/**
+ * 
+ * #LoginForm
+ * The form used to log in.
+ * 
+ * ```js
+ * import LoginForm from 'grommet/components/LoginForm';
+ * 
+ * <LoginForm onSubmit={...}
+ *   logo={<Logo />}
+ *   title='Sample Title'
+ *   secondaryText='Sample secondary text'
+ *   forgotPassword={<Anchor href='#'
+ *   label='Forgot password?' />} />
+ * ```
+ */
 export default class LoginForm extends Component {
 
   constructor(props, context) {
@@ -177,22 +193,52 @@ export default class LoginForm extends Component {
 }
 
 LoginForm.propTypes = {
+  /**
+   * @property {['start', 'center', 'end', 'stretch']} align - How to align the contents along the cross axis.
+   */
   align: PropTypes.oneOf(['start', 'center', 'end', 'stretch']),
+  /**
+   * @property {PropTypes.shape} defaultValues - Default values for username and rememberMe
+   */
   defaultValues: PropTypes.shape({
     username: PropTypes.string,
     rememberMe: PropTypes.bool
   }),
+  /**
+   * @property {[PropTypes.string|PropTypes.node]} errors - An array of error messages. Use this if there is a failure to log in.
+   */
   errors: PropTypes.arrayOf(PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.node
   ])),
+  /**
+   * @property {PropTypes.node} forgotPassword - A link that would take the user to a new page.
+   */
   forgotPassword: PropTypes.node,
+  /**
+   * @property {PropTypes.node} logo - A react node. Best suited to an svg element or a custom component containing an svg element.
+   */
   logo: PropTypes.node,
+  /**
+   * @property {PropTypes.func} onSubmit - Function that will be called with the username, password and rememberMe provided.
+   */
   onSubmit: PropTypes.func,
   onChange: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} rememberMe - Whether to include a remember me input.
+   */
   rememberMe: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} secondaryText - Secondary text related to the product.
+   */
   secondaryText: PropTypes.string,
+  /**
+   * @property {PropTypes.string} title - The product name.
+   */
   title: PropTypes.string,
+  /**
+   * @property {PropTypes.string} usernameType - The type of username input. Defaults to email.
+   */
   usernameType: PropTypes.string
 };
 

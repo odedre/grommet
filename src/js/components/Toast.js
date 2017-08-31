@@ -120,6 +120,19 @@ ToastContents.childContextTypes = {
   store: PropTypes.object
 };
 
+/**
+ * #Toast
+ * A terse notification that will only be displayed for a short period of time, overlaying whatever the user is currently doing.
+ * 
+ * ```js
+ * import Toast from 'grommet/components/Toast';
+ * 
+ * <Toast status='ok'
+ *   onClose={...}>
+ *   A short message to let the user know something.
+ * </Toast>
+ * ```
+ */
 export default class Toast extends Component {
 
   componentDidMount () {
@@ -183,8 +196,17 @@ export default class Toast extends Component {
 }
 
 Toast.propTypes = {
+  /**
+   * @property {PropTypes.func} onMore - Called when the user clicks on the close control or the Toast is automatically closed after a while.
+   */
   onClose: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onMore - The size of the Header. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {PropTypes.func} onMore - Which status to indicate.
+   */
   status: PropTypes.string
 };
 

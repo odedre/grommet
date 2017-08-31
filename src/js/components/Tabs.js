@@ -8,6 +8,33 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.TABS;
 
+/**
+ * #Tabs
+ * A tabular view component. The Tabs component contains one or more Tab components.
+ * 
+ * ```js
+ * import Tabs from 'grommet/components/Tabs';
+ * 
+ * <Tabs>
+ *   <Tab title='First Title'>
+ *     <Paragraph>
+ *       First contents
+ *     </Paragraph>
+ *     <input type='text'
+ *       value=''
+ *       onChange={...} />
+ *   </Tab>
+ *   <Tab title='Second Title'>
+ *     <Paragraph>
+ *       Second contents
+ *     </Paragraph>
+ *     <input type='text'
+ *       value=''
+ *       onChange={...} />
+ *   </Tab>
+ * </Tabs>
+ * ```
+ */
 export default class Tabs extends Component {
 
   constructor(props, context) {
@@ -93,9 +120,21 @@ export default class Tabs extends Component {
 }
 
 Tabs.propTypes = {
+  /**
+   * @property {PropTypes.number} activeIndex - Active tab index. Defaults to 0.
+   */
   activeIndex: PropTypes.number,
+  /**
+   * @property {['start', 'center', 'end']} justify - How to align the tabs along the main axis. Defaults to center.
+   */
   justify: PropTypes.oneOf(['start', 'center', 'end']),
+  /**
+   * @property {PropTypes.bool} responsive - Whether the row of tabs should be switched to a centered column layout when the display area narrows. Defaults to true.
+   */
   responsive: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onActive - Function that will be called with the active tab index when the currently active tab changes.
+   */
   onActive: PropTypes.func
 };
 

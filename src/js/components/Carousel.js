@@ -17,6 +17,26 @@ import Props from '../utils/Props';
 
 const CLASS_ROOT = CSSClassnames.CAROUSEL;
 
+/**
+ * #Carousel
+ * Image carousel.
+ * 
+ * ```js
+ * import Carousel from 'grommet/components/Carousel';
+ * 
+ * <Carousel>
+ *   <Image src='/img/carousel-1.png' />
+ *   <Image src='/img/carousel-2.png' />
+ *   <Box pad='large'
+ *     colorIndex='neutral-3'>
+ *     <Box pad='medium'
+ *       colorIndex='neutral-2'>
+ *       Content inside of a Box element.
+ *     </Box>
+ *   </Box>
+ * </Carousel>
+ * ```
+ */
 export default class Carousel extends Component {
 
   constructor(props, context) {
@@ -392,10 +412,28 @@ Carousel.defaultProps = {
 
 Carousel.propTypes = {
   a11yTitle: PropTypes.string,
+  /**
+   * @property {PropTypes.number} activeIndex - Active carousel index. Defaults to 0. If activeIndex is used, you will be in control. This means that you will need to use onActive callback to update your component state when the index changes.
+   */
   activeIndex: PropTypes.number,
+  /**
+   * @property {PropTypes.bool} autoplay - Whether the carousel should play automatically or not. Defaults to true.
+   */
   autoplay: PropTypes.bool,
+  /**
+   * @property {PropTypes.number} autoplaySpeed - How long the carousel should stay on each slide, in milliseconds. Defaults to 5000 (5 seconds).
+   */
   autoplaySpeed: PropTypes.number,
+  /**
+   * @property {PropTypes.bool} infinite - Whether the carousel should scroll back to the first slide when you get to the end, or stop at the last slide. Defaults to true.
+   */
   infinite: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onActive - Function that will be called with the active index when the currently active carousel changes.
+   */
   onActive: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} persistentNav - Whether the navigational elements should always be shown, or only show when the user mouses over the carousel. Defaults to true.
+   */
   persistentNav: PropTypes.bool
 };

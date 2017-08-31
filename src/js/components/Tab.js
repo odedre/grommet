@@ -49,6 +49,9 @@ export default class Tab extends Component {
 }
 
 Tab.propTypes = {
+  /**
+   * @property {PropTypes.node} title - Label for the tab. This property is required.
+   */
   title: PropTypes.node.isRequired,
   active: PropTypes.bool,
   id: PropTypes.string,

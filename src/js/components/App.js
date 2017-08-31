@@ -27,6 +27,18 @@ if (! localesSupported()) {
   Intl.DateTimeFormat = IntlPolyfill.DateTimeFormat;
 }
 
+/**
+ * #App
+ * This is the primary Grommet container outer. Typically it will either contain a [Split](#) or an [Article](#).
+ * 
+ * ```js
+ *  import App from 'grommet/components/App';
+ * 
+ * <App>
+ *   {contents}
+ * </App>
+ * ```
+ */
 export default class App extends Component {
   constructor(props, context) {
     super(props, context);
@@ -69,7 +81,13 @@ export default class App extends Component {
 }
 
 App.propTypes = {
+  /**
+   * @property {PropTypes.bool} centered - Whether to centralize or not the content inside the container. Defaults to true.
+   */
   centered: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} inline - Whether to render the app relative to the container (inline) or to the browser window. Defaults to false.
+   */
   inline: PropTypes.bool
 };
 

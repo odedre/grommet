@@ -9,6 +9,18 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.TITLE;
 
+/**
+ * #Title
+ * Title component usually rendered inside a Header.
+ * 
+ * ```js
+ * import Title from 'grommet/components/Title';
+ * 
+ * <Title>
+ *   {contents}
+ * </Title>
+ * ```
+ */
 export default class Title extends Component {
 
   render () {
@@ -55,9 +67,21 @@ export default class Title extends Component {
 }
 
 Title.propTypes = {
+  /**
+   * @property {PropTypes.string} a11yTitle - Custom title used by screen readers. Default is 'Title'. Only used if onClick handler is specified.
+   */
   a11yTitle: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onClick - Click handler.
+   */
   onClick: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} responsive - Whether to only display the logo when the display area narrows.
+   */
   responsive: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} truncate - Restrict the text to a single line and truncate with ellipsis if it is too long to all fit. Defaults to true.
+   */
   truncate: PropTypes.bool
 };
 

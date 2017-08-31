@@ -11,6 +11,42 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.FOOTER;
 
+/**
+ * 
+ * #Footer
+ * Put things at the bottom.
+ * 
+ * ```js
+ * import Footer from 'grommet/components/Footer';
+ * 
+ * <Footer justify='between'>
+ *   <Title>
+ *     <Logo />
+ *      Title
+ *   </Title>
+ *   <Box direction='row'
+ *     align='center'
+ *     pad={{"between": "medium"}}>
+ *     <Paragraph margin='none'>
+ *       © 2016 Grommet Labs
+ *     </Paragraph>
+ *     <Menu direction='row'
+ *       size='small'
+ *       dropAlign={{"right": "right"}}>
+ *       <Anchor href='#'>
+ *         Support
+ *       </Anchor>
+ *       <Anchor href='#'>
+ *         Contact
+ *       </Anchor>
+ *       <Anchor href='#'>
+ *         About
+ *       </Anchor>
+ *     </Menu>
+ *   </Box>
+ * </Footer>
+ * ```
+ */
 export default class Footer extends Component {
 
   constructor(props, context) {
@@ -130,7 +166,13 @@ export default class Footer extends Component {
 Footer.propTypes = {
   fixed: PropTypes.bool,
   float: PropTypes.bool,
+  /**
+   * @property {PropTypes.bool} primary - Whether it should be treated as main footer or not. Used for Accessibility.
+   */
   primary: PropTypes.bool,
+  /**
+   * @property {['small', 'medium', 'large']} size - The size of the Header. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   ...Box.propTypes
 };

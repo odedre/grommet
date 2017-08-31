@@ -21,6 +21,24 @@ import CSSClassnames from '../utils/CSSClassnames';
 const CLASS_ROOT = CSSClassnames.ARTICLE;
 const DEFAULT_PLAY_INTERVAL = 10000; // 10s
 
+/**
+ * #Article
+ * A standard [HTML5 article](#). It might contain a [Header](#), one or more [Sections](#), and a [Footer](#).
+ * 
+ * ```js
+ * import Article from 'grommet/components/Article';
+ * 
+ * <Article>
+ *   <Section pad='large'
+ *     justify='center'
+ *     align='center'>
+ *     <Headline margin='none'>
+ *       Section 1
+ *     </Headline>
+ *   </Section>
+ * </Article>
+ * ```
+ */
 export default class Article extends Component {
 
   constructor(props, context) {
@@ -648,8 +666,17 @@ Article.propTypes = {
     previous: PropTypes.string
   }),
   onProgress: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - Function that will be called when the article changes the currently selected chapter.
+   */
   onSelect: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} scrollStep - The currently selected chapter using a zero based index. Defaults to 0.
+   */
   scrollStep: PropTypes.bool,
+  /**
+   * @property {PropTypes.number} selected - Whether to allow keyboard control of stepped scrolling through children. When true, directional keys will step through the children, depending on the direction they are laid out. Note: You cannot use full={true} with this property.
+   */
   selected: PropTypes.number
 };
 

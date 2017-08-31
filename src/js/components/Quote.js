@@ -10,6 +10,28 @@ import CSSClassnames from '../utils/CSSClassnames';
 const CLASS_ROOT = CSSClassnames.QUOTE;
 const BORDER_COLOR_INDEX = CSSClassnames.BORDER_COLOR_INDEX;
 
+/**
+ * #Quote
+ * A quote with a colored border.
+ *
+ * ```js
+ * import Quote from 'grommet/components/Quote';
+ * 
+ * <Quote credit='Ricky Baker'>
+ *   <Paragraph>
+ *     Trees. Birds. Rivers. Sky.
+ *   </Paragraph>
+ *   <Paragraph>
+ *     Running with my Uncle Hec
+ *   </Paragraph>
+ *   <Paragraph>
+ *     Living forever.
+ *   </Paragraph>
+ * </Quote>
+ * ```
+ * 
+ * Properties for [Box](#) are available.
+ */
 export default class Quote extends Component {
   render () {
     const {
@@ -58,9 +80,21 @@ export default class Quote extends Component {
 }
 
 Quote.propTypes = {
+  /**
+   * @property {PropTypes.string} borderColorIndex - ColorIndex of the border.
+   */
   borderColorIndex: PropTypes.string,
+  /**
+   * @property {['small', 'medium', 'large', 'full']} size - Width of the box containing the quote. Defaults to large.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
+  /**
+   * @property {[PropTypes.string|PropTypes.element]} credit - The name of the entity that the quote is credited to.
+   */
   credit: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  /**
+   * @property {PropTypes.bool} emphasizeCredit - Whether the quote credit should be bolded for emphasis. Defaults to true.
+   */
   emphasizeCredit: PropTypes.bool,
   ...Box.propTypes
 };

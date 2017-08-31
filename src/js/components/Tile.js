@@ -10,6 +10,11 @@ import CSSClassnames from '../utils/CSSClassnames';
 const CLASS_ROOT = CSSClassnames.TILE;
 const NAMESPACE = CSSClassnames.NAMESPACE;
 
+/**
+ * #Tile
+ * Properties for [Box](#) are also available for Tile.
+ */
+
 export default class Tile extends Component {
 
   render () {
@@ -53,6 +58,9 @@ Tile.propTypes = {
   hoverColorIndex: PropTypes.string,
   hoverBorder: PropTypes.bool,
   hoverBorderSize: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {PropTypes.bool} wide - Whether the tile should fill the full width of the Tiles component that contains it.
+   */
   wide: PropTypes.bool, /// remove in 1.0? Box.basis='full'
   ...Box.propTypes
 };

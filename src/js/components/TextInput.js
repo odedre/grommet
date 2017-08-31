@@ -15,6 +15,23 @@ const CLASS_ROOT = CSSClassnames.TEXT_INPUT;
 const INPUT = CSSClassnames.INPUT;
 const FORM_FIELD = CSSClassnames.FORM_FIELD;
 
+/**
+ * #TextInput
+ * A text input field with optional suggestions.
+ * 
+ * ```js
+ * import TextInput from 'grommet/components/TextInput';
+ * 
+ * <FormField>
+ *   <TextInput id='item1'
+ *     name='item-1'
+ *     value='one'
+ *     onDOMChange={...}
+ *     onSelect={...}
+ *     suggestions={['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']} />
+ * </FormField>
+ * ```
+ */
 export default class TextInput extends Component {
 
   constructor(props, context) {
@@ -329,12 +346,33 @@ TextInput.contextTypes = {
 };
 
 TextInput.propTypes = {
+  /**
+   * @property {PropTypes.string} defaultValue - What text to start with in the input.
+   */
   defaultValue: PropTypes.string,
+  /**
+   * @property {PropTypes.string} id - The id attribute of the input.
+   */
   id: PropTypes.string,
+  /**
+   * @property {PropTypes.string} name - The name attribute of the input.
+   */
   name: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onDOMChange - Function that will be called when the user types in the input.
+   */
   onDOMChange: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - Function that will be called when the user selects a suggestion. The suggestion contains the object chosen from the supplied suggestions.
+   */
   onSelect: PropTypes.func,
+  /**
+   * @property {PropTypes.string} placeHolder - Placeholder text to use when the input is empty.
+   */
   placeHolder: PropTypes.string,
+  /**
+   * @property {} suggestions - Suggestions to show. It is recommended to avoid showing too many suggestions and instead rely on the user to type more.
+   */
   suggestions: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
@@ -344,5 +382,8 @@ TextInput.propTypes = {
       PropTypes.string
     ])
   ),
+  /**
+   * @property {PropTypes.string} value - What text to put in the input.
+   */
   value: PropTypes.string
 };

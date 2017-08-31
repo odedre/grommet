@@ -28,5 +28,8 @@ export default class TableRow extends Component {
 }
 
 TableRow.propTypes = {
+  /**
+   * @property {PropTypes.func} onClick - Called when the user clicks on the row. Callers should bind an identifier to the function to distinguish between multiple rows. For example onClick={this._onClick.bind(this, id)}
+   */
   onClick: PropTypes.func
 };

@@ -21,6 +21,18 @@ const THIN_HEIGHT = 72;
 
 const GUTTER_SIZE = 4;
 
+/**
+ * 
+ * #Distribution
+ * Shows a graphic of relatively sized items. If colorIndex properties are not specified per series item, they will be automatically asigned. One way to use a Distribution is to compare items across two attributes. One attribute determining the area and another determining the color. The guidance for coloring items is to use colorIndex 'unset' for less important items, neutral or graph colors for normal items and accent colors for items to call attention to. Status colorIndex values can be used as well.
+ * ```js
+ *  import Distribution from 'grommet/components/Distribution';
+ * 
+ * <Distribution series={[{"label": "First", "value": 40, "onClick": "..."}, {"label": "Second", "value": 30, "onClick": "..."}, {"label": "Third", "value": 20, "onClick": "..."}, {"label": "Fourth", "value": 10, "onClick": "..."}]}
+ *   full={true}
+ *   units='%' />
+ * ```
+ */
 export default class Distribution extends Component {
 
   constructor(props, context) {
@@ -533,7 +545,13 @@ Distribution.contextTypes = {
 
 Distribution.propTypes = {
   a11yTitle: PropTypes.string,
+  /**
+   * @property {PropTypes.bool} full - Whether the height should fill its container.
+   */
   full: PropTypes.bool, // deprecated, use size='full'
+  /**
+   * @property {[PropTypes.shape]} series - An array of objects describing the data. All properties except value are optional. labelValue is used as the visible value. If labelValue is not set, the value is displayed instead.
+   */
   series: PropTypes.arrayOf(PropTypes.shape({
     label: PropTypes.node,
     value: PropTypes.number.isRequired,
@@ -546,7 +564,13 @@ Distribution.propTypes = {
       svgElement: PropTypes.node
     })
   })),
+  /**
+   * @property {['small', 'medium', 'large', 'full']} size - The height of the Distribution. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large', 'full']),
+  /**
+   * @property {PropTypes.string} units - Optional units to display next to the value label.
+   */
   units: PropTypes.string,
   vertical: PropTypes.bool
 };

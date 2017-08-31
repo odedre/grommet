@@ -17,6 +17,16 @@ const CLASS_ROOT = CSSClassnames.SEARCH_INPUT;
 const INPUT = CSSClassnames.INPUT;
 const FORM_FIELD = CSSClassnames.FORM_FIELD;
 
+/**
+ * #SearchInput
+ * An input field with a search control.
+ * 
+ * ```js
+ * import SearchInput from 'grommet/components/SearchInput';
+ * 
+ * <SearchInput placeHolder='Search' />
+ * ```
+ */
 export default class SearchInput extends Component {
 
   constructor(props, context) {
@@ -309,6 +319,9 @@ SearchInput.contextTypes = {
 };
 
 SearchInput.propTypes = {
+  /**
+   * @property {[PropTypes.shape]} defaultValue - What text to start with in the input.
+   */
   defaultValue: PropTypes.oneOfType([
     PropTypes.shape({
       label: PropTypes.string,
@@ -316,11 +329,29 @@ SearchInput.propTypes = {
     }),
     PropTypes.string
   ]),
+  /**
+   * @property {PropTypes.string} id - The id attribute of the input.
+   */
   id: PropTypes.string,
+  /**
+   * @property {PropTypes.string} name - The name attribute of the input.
+   */
   name: PropTypes.string,
+  /**
+   * @property {PropTypes.func} onDOMChange - Function that will be called when the user types in the input.
+   */
   onDOMChange: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - Function that will be called when the user selects a suggestion. The target corresponds to the embedded input element, allowing you to distinguish which component triggered the event. The suggestion contains the object chosen from the supplied suggestions.
+   */
   onSelect: PropTypes.func,
+  /**
+   * @property {PropTypes.string} placeHolder - Placeholder text to use when the input is empty.
+   */
   placeHolder: PropTypes.string,
+  /**
+   * @property {} suggestions - Suggestions can be either a string or an object. The label property of suggestion objects can be a string or a React element. This allows rendering richer suggestion representations.
+   */
   suggestions: PropTypes.arrayOf(
     PropTypes.oneOfType([
       PropTypes.shape({
@@ -330,6 +361,9 @@ SearchInput.propTypes = {
       PropTypes.string
     ])
   ),
+  /**
+   * @property {[PropTypes.shape]} value - What text to put in the input.
+   */
   value: PropTypes.oneOfType([
     PropTypes.shape({
       label: PropTypes.string,

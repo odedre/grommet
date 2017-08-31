@@ -7,6 +7,22 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.FORM_FIELD;
 
+/**
+ * #FormField
+ * A field in a web form.
+ * 
+ * ```js
+ * import FormField from 'grommet/components/FormField';
+ * 
+ * <Form>
+ *   <FormField label='Sample label'
+ *     help='sample help'
+ *     error='sample error'>
+ *     <TextInput />
+ *   </FormField>
+ * </Form>
+ * ```
+ */
 export default class FormField extends Component {
 
   constructor(props, context) {
@@ -104,12 +120,33 @@ export default class FormField extends Component {
 }
 
 FormField.propTypes = {
+  /**
+   * @property {PropTypes.node} error - Validation errors.
+   */
   error: PropTypes.node,
+  /**
+   * @property {PropTypes.node} help - Helpful text.
+   */
   help: PropTypes.node,
+  /**
+   * @property {PropTypes.bool} hidden - Whether the FormField should be hidden. Defaults to false. This property will most likely be removed in Grommet 2.0. Consider using React state to manage the FormFields you want to show/hide.
+   */
   hidden: PropTypes.bool,
+  /**
+   * @property {PropTypes.string} htmlFor - Id of the input element that the label should be associated with.
+   */
   htmlFor: PropTypes.string,
+  /**
+   * @property {PropTypes.node} label - Label for the field.
+   */
   label: PropTypes.node,
+  /**
+   * @property {['medium', 'large']} size - The size of the input text font. Defaults to medium. This property will most likely be removed in Grommet 2.0.
+   */
   size: PropTypes.oneOf(['medium', 'large']),
+  /**
+   * @property {PropTypes.bool} strong - Whether the text for the input field should be strong. Defaults to false. This property will most likely be removed in Grommet 2.0.
+   */
   strong: PropTypes.bool
 };
 

@@ -16,6 +16,43 @@ const LIST_ITEM = CSSClassnames.LIST_ITEM;
 const SELECTED_CLASS = `${CLASS_ROOT}-item--selected`;
 const ACTIVE_CLASS = `${CLASS_ROOT}-item--active`;
 
+/**
+ * #List
+ * A list of items. The preferred method of populating items in the List is to use ListItem children.
+ * 
+ * ```js
+ * import List from 'grommet/components/List';
+ * import ListItem from 'grommet/components/ListItem';
+ * 
+ * <List>
+ *   <ListItem justify='between'
+ *     separator='horizontal'>
+ *     <span>
+ *       Alan
+ *     </span>
+ *     <span className='secondary'>
+ *       happy
+ *     </span>
+ *   </ListItem>
+ *   <ListItem justify='between'>
+ *     <span>
+ *       Chris
+ *     </span>
+ *     <span className='secondary'>
+ *       cool
+ *     </span>
+ *   </ListItem>
+ *   <ListItem justify='between'>
+ *     <span>
+ *       Eric
+ *     </span>
+ *     <span className='secondary'>
+ *       odd
+ *     </span>
+ *   </ListItem>
+ * </List>
+ * ```
+ */
 export default class List extends Component {
 
   constructor(props, context) {
@@ -338,12 +375,24 @@ List.contextTypes = {
 
 List.propTypes = {
   emptyIndicator: PropTypes.node,
+  /**
+   * @property {PropTypes.func} onMore - Function that will be called when more data is needed.
+   */
   onMore: PropTypes.func,
+  /**
+   * @property {PropTypes.func} onSelect - Function that will be called when the user selects something. When only one item is selected, it returns the zero based index for that item. When multiple items are selected, it returns an array of those item's zero based indexes.
+   */
   onSelect: PropTypes.func,
+  /**
+   * @property {[PropTypes.bool|PropTypes.oneOf(['multiple'])]} selectable - Whether rows are selectable. multiple indicates that multiple rows may be selected
+   */
   selectable: PropTypes.oneOfType([
     PropTypes.bool,
     PropTypes.oneOf(['multiple'])
   ]),
+  /**
+   * @property {[PropTypes.number|PropTypes.arrayOf(PropTypes.number)]} selected - The currently selected item(s) using a zero based index.
+   */
   selected: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number)

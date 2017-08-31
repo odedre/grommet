@@ -7,6 +7,45 @@ import CSSClassnames from '../utils/CSSClassnames';
 
 const CLASS_ROOT = CSSClassnames.FORM;
 
+/**
+ * 
+ * #Form
+ * A web form.
+ * 
+ * ```js
+ * import Form from 'grommet/components/Form';
+ * // Please see the documentation for each
+ * // field's component for further example
+ * // details of that component.
+ * 
+ * <Form>
+ *   <Header>
+ *     <Heading>
+ *       Sample Header
+ *     </Heading>
+ *   </Header>
+ *   <FormFields>
+ *     <fieldset>
+ *       <Paragraph>
+ *         You must acknowledge the destructive aspects of this action.
+ *       </Paragraph>
+ *       <FormField>
+ *         <CheckBox id='agree'
+ *           name='agree'
+ *           label='I acknowledge that I may lose data.' />
+ *       </FormField>
+ *     </fieldset>
+ *     <t />
+ *   </FormFields>
+ *   <Footer pad={{"vertical": "medium"}}>
+ *     <Button label='Submit'
+ *       type='submit'
+ *       primary={true}
+ *       onClick={...} />
+ *   </Footer>
+ * </Form>
+ * ```
+ */
 export default class Form extends Component {
   render () {
     const { className, compact, fill, pad, plain, ...props } = this.props;
@@ -34,9 +73,18 @@ export default class Form extends Component {
 }
 
 Form.propTypes = {
+  /**
+   * @property {PropTypes.bool} compact - Whether to render the form in a compact style.
+   */
   compact: PropTypes.bool,
   fill: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onSubmit - A function called when the user submits the form.
+   */
   onSubmit: PropTypes.func,
+  /**
+   * @property {[['none', 'small', 'medium', 'large']|PropTypes.shape]} pad - The amount of padding to put around the contents. An object can be specified to distinguish horizontal and vertical padding: {horizontal: none|small|medium|large, vertical: none|small|medium|large}. Defaults to none.
+   */
   pad: PropTypes.oneOfType([
     PropTypes.oneOf(['none', 'small', 'medium', 'large']),
     PropTypes.shape({
@@ -44,6 +92,9 @@ Form.propTypes = {
       vertical: PropTypes.oneOf(['none', 'small', 'medium', 'large'])
     })
   ]),
+  /**
+   * @property {PropTypes.bool} plain - Whether the children should control the form width. Defaults to false.
+   */
   plain: PropTypes.bool
 };
 

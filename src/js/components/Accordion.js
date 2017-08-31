@@ -10,6 +10,28 @@ import Props from '../utils/Props';
 
 const CLASS_ROOT = CSSClassnames.ACCORDION;
 
+/**
+ * 
+ * # Accordion
+ * A collapsible accordion component.
+ * ``js
+ * import Accordion from 'grommet/components/Accordion';
+ * import AccordionPanel from 'grommet/components/AccordionPanel';
+ * 
+ * <Accordion>
+ *   <AccordionPanel heading='First Title'>
+ *     <Paragraph>
+ *       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *     </Paragraph>
+ *   </AccordionPanel>
+ *   <AccordionPanel heading='Second Title'>
+ *     <Paragraph>
+ *       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ *     </Paragraph>
+ *   </AccordionPanel>
+ * </Accordion>
+ * ```
+ */
 export default class Accordion extends Component {
 
   constructor(props, context) {
@@ -87,12 +109,24 @@ export default class Accordion extends Component {
 }
 
 Accordion.propTypes = {
+  /**
+   * @property {[PropTypes.number,PropTypes.arrayOf(PropTypes.number)]} active - Optional active panels to be opened by default.
+   */
   active: PropTypes.oneOfType([
     PropTypes.number,
     PropTypes.arrayOf(PropTypes.number)
   ]),
+  /**
+   * @property {PropTypes.bool} animate - Transition content in & out with a slide down animation. Defaults to true.
+   */
   animate: PropTypes.bool,
+  /**
+   * @property {PropTypes.func} onActive - Function that will be called when the Accordion changes the currently active panels.
+   */
   onActive: PropTypes.func,
+  /**
+   * @property {PropTypes.bool} openMulti - Allow multiple panels to be opened at once. Defaults to false.
+   */
   openMulti: PropTypes.bool
 };
 

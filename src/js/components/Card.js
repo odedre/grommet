@@ -53,6 +53,25 @@ const PARAGRAPH_MARGINS = {
   xsmall: 'small'
 };
 
+/**
+ * #Card
+ * An annotated summary of something. This could be used on a home/marketing page to provide snippets of content that the user can click through for more detail. Or, as search result items. All properties are optional and can be mixed and matched as needed.
+ * Card could be used in combination with Columns or Tiles.
+ * 
+ * Properties for [Box](#) are also available for Card.
+ * 
+ * ```js
+ * import Card from 'grommet/components/Card';
+ * 
+ * <Card thumbnail='/img/carousel-1.png'
+ *   label='Sample Label'
+ *   heading='Sample Heading'
+ *   description='Sample description providing more details.'
+ *   video={{"source": "/video/test.mp4", "type": "mp4"}}
+ *   link={<Anchor href=''
+ *   label='Sample anchor' />} />
+ * ```
+ */
 export default class Card extends Component {
 
   constructor (props) {
@@ -257,27 +276,54 @@ export default class Card extends Component {
 }
 
 Card.propTypes = {
+  /**
+   * @property {Box.propTypes.pad} contentPad - Padding for the Box containing the text content. See pad in [Box](#) for additional details.
+   */
   contentPad: Box.propTypes.pad,
+  /**
+   * @property {[PropTypes.string|PropTypes.element]} description - Either a string in markdown syntax or an element. See [Markdown](#) for additional details.
+   */
   description: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
   ]),
+  /**
+   * @property {[PropTypes.string|PropTypes.element]} heading - Heading content.
+   */
   heading: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
   ]),
+  /**
+   * @property {PropTypes.bool} headingStrong - Whether to render the heading strongly. This only has an effect when the heading is supplied as a string.
+   */
   headingStrong: PropTypes.bool,
+  /**
+   * @property {[PropTypes.string|PropTypes.element]} label - Label content.
+   */
   label: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
   ]),
+  /**
+   * @property {PropTypes.element} link - Anchor element. See [Anchor](#).
+   */
   link: PropTypes.element,
+  /**
+   * @property {['xsmall', 'small', 'medium', 'large', 'xlarge']} textSize - Size of text elements within the Card. Defaults to medium. If you pass custom elements for description, label, or heading, they will not be resized.
+   */
   textSize: PropTypes.oneOf(['xsmall', 'small', 'medium', 'large', 'xlarge']),
+  /**
+   * @property {[PropTypes.string|PropTypes.element]} thumbnail - Url path to image or an [Image](#) element. Use the reverse property to position the thumbnail within card.
+   */
   thumbnail: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.element
   ]),
   truncate: PropTypes.bool,
+  /**
+   * @property {PropTypes.shape} video - Video media type and source path or a [Video](#) element.
+   */
   video: PropTypes.oneOfType([
     PropTypes.shape({
       source: PropTypes.string.isRequired,

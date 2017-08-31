@@ -12,6 +12,34 @@ import Image from './Image';
 const CLASS_ROOT = CSSClassnames.HERO;
 const BACKGROUND_COLOR_INDEX = CSSClassnames.BACKGROUND_COLOR_INDEX;
 
+/**
+ * #Hero
+ * A Hero image or video, overlaid with text.
+ * 
+ * ```js
+ * import Hero from 'grommet/components/Hero';
+ * 
+ * <Hero background={<Image src='/img/carousel-1.png'
+ *   fit='cover'
+ *   full={true} />}
+ *   backgroundColorIndex='dark'>
+ *   <Box direction='row'
+ *     justify='center'
+ *     align='center'>
+ *     <Box basis='1/2'
+ *       align='end'
+ *       pad='medium' />
+ *     <Box basis='1/2'
+ *       align='start'
+ *       pad='medium'>
+ *       <Heading margin='none'>
+ *         Sample Heading
+ *       </Heading>
+ *     </Box>
+ *   </Box>
+ * </Hero>
+ * ```
+ */
 export default class Hero extends Component {
 
   constructor(props, context) {
@@ -221,8 +249,17 @@ export default class Hero extends Component {
 }
 
 Hero.propTypes = {
+  /**
+   * @property {PropTypes.element} background - An element to show in the background. If it is an [Image](#), be sure to specify fit='cover'.
+   */
   background: PropTypes.element,
+  /**
+   * @property {PropTypes.string} backgroundColorIndex - This controls the text color for any children when they are shown over the background. Typically, this is either unset or dark.
+   */
   backgroundColorIndex: PropTypes.string,
+  /**
+   * @property {['small', 'medium', 'large']} size - Size of the Hero. Defaults to medium.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   // below props are all deprecated
   backgroundImage: PropTypes.string,

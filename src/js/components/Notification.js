@@ -21,6 +21,22 @@ import { checkDarkBackground } from '../utils/DOM';
 const CLASS_ROOT = CSSClassnames.NOTIFICATION;
 const BACKGROUND_COLOR_INDEX = CSSClassnames.BACKGROUND_COLOR_INDEX;
 
+/**
+ * #Notification
+ * A box to display notification messages.
+ * 
+ * Properties for [Box](#) are also available for Notification.
+ * 
+ * ```js
+ * import Notification from 'grommet/components/Notification';
+ * 
+ * <Notification state='Sample state'
+ *   message='Sample message'
+ *   timestamp={{}}
+ *   percentComplete={30} />
+ * ```
+ */
+
 export default class Notification extends Component {
 
   constructor () {
@@ -208,17 +224,41 @@ export default class Notification extends Component {
 }
 
 Notification.propTypes = {
+  /**
+   * @property {[PropTypes.node|PropTypes.bool]} closer - Adds a visible control to close the layer. If the caller provides a node, it is the caller's responsibility to listen to events from the node.
+   */
   closer: PropTypes.oneOfType([
     PropTypes.node,
     PropTypes.bool
   ]),
   context: PropTypes.node,
+  /**
+   * @property {PropTypes.string} message - Message to display in the notification box.
+   */
   message: PropTypes.string.isRequired,
+  /**
+   * @property {PropTypes.func} onClose - Function that will be called when the user clicks on the closer control. Clicking the closer control does not automatically cause the Notification to be removed. The recipient of this callback can still decide whether to continue rendering the Notification or not.
+   */
   onClose: PropTypes.func,
+  /**
+   * @property {PropTypes.number} percentComplete - Number to measure the progress of an ongoing notification.
+   */
   percentComplete: PropTypes.number,
+  /**
+   * @property {['small', 'medium', 'large']} size - Size of the notification box.
+   */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * @property {PropTypes.string} state - State of the element on the notification message (e.g. Active, Running).
+   */
   state: PropTypes.string,
+  /**
+   * @property {PropTypes.string} status - Status of the element on the nofitication message (e.g. Ok, Critical). Please see the Status component for full list of supported values.
+   */
   status: PropTypes.string,
+  /**
+   * @property {PropTypes.func} timestamp - Timestamp of the notification message.
+   */
   timestamp: PropTypes.object, // Date
   ...Box.propTypes
 };
